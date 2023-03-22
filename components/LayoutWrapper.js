@@ -5,6 +5,7 @@ import SectionContainer from './SectionContailner';
 import Footer from './Footer';
 import Image from 'next/image';
 import { FcAutomatic } from "react-icons/fc";
+import { BsFillSunFill, BsCloudMoonFill } from "react-icons/bs";
 
 
 const LayoutWrapper = ({ children }) => {
@@ -49,23 +50,19 @@ const LayoutWrapper = ({ children }) => {
                         {/* <ThemeSwitch /> */}
                         <div onClick={themeModeHandle}>
                             <div className="mr-4 hidden dark:block">
-                                <Image
-                                    width={32}
-                                    height={30}
+                                <BsCloudMoonFill
+                                    size={30}
                                     objectFit={'contain'}
                                     className="cursor-pointer"
                                     alt="밝은 모드로 변경"
-                                    src="/images/Nav/moon.png"
                                 />
                             </div>
                             <div className="mr-4 dark:hidden">
-                                <Image
-                                    width={32}
-                                    height={30}
+                                <BsFillSunFill
+                                    size={30}
                                     objectFit={'contain'}
                                     className="cursor-pointer"
                                     alt="어두운 모드로 변경"
-                                    src="/images/Nav/sun.png"
                                 />
                             </div>
                             {/* <MobileNav /> */}
