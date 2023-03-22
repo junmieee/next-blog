@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+body[data-theme="dark"]{
+  --bg-main: #111111;
+  --bg-sub: #333333;
+  --bg-a5: rgba(0,0,0,0.5);
+  --bg-a7: rgba(0,0,0,0.7);
+  --tx-main: #eaeaea;
+  --tx-sub: #bdc1c9;
+  --tx-sub-dark: #A6A5A4;
+  --tx-accent: #6667ab;
+  --tx-accent-light: #B2B3D5;
+  --tx-wb: #ffffff;
+}
+
+body[data-theme="light"]{
+  --bg-main: #ffffff;
+  --bg-sub: #f4f4f4;
+  --bg-a5: rgba(255,255,255,0.5);
+  --bg-a7: rgba(255,255,255,0.7);
+  --tx-main: #111111;
+  --tx-sub: #555555;
+  --tx-sub-dark: #333333;
+  --tx-accent: #159eee;
+  --tx-accent-light:#99cfe5;
+  --tx-wb: #000000;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+} */
+
+
+.task-list-item::before {
+  @apply hidden;
+}
+
+.task-list-item {
+  @apply list-none;
+}
+
+.footnotes {
+  @apply pt-8 mt-12 border-t border-gray-200 dark:border-gray-700;
+}
+
+.csl-entry {
+  @apply my-5;
+}
+
+/* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
