@@ -15,10 +15,20 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
     render() {
+        const handleTheme = `
+            if (localStorage.theme === 'dark) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        `;
+
         return (
             <Html lang="ko">
                 <Head />
                 <body>
+                    <script dangerouslySetInnerHTML={{ __html: handleTheme }} />
+
                     <Main />
                     <NextScript />
                 </body>

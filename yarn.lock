@@ -221,6 +221,13 @@
   resolved "https://registry.npmjs.org/@next/env/-/env-13.2.4.tgz"
   integrity sha512-+Mq3TtpkeeKFZanPturjcXt+KHfKYnLlX6jMLyCrmpq6OOs4i1GqBOAauSkii9QeKCMTYzGppar21JU57b/GEA==
 
+"@next/mdx@^13.2.4":
+  version "13.2.4"
+  resolved "https://registry.npmjs.org/@next/mdx/-/mdx-13.2.4.tgz"
+  integrity sha512-inl7u+OEa4Ok3uL052oa8EDw1bUkMGLVKzFfVBIgG19s29gxQvcWYzxa5t438J31ljApjh6Y5k4AD6yLaCAlQw==
+  dependencies:
+    source-map "^0.7.0"
+
 "@next/swc-darwin-x64@13.2.4":
   version "13.2.4"
   resolved "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-13.2.4.tgz"

@@ -28,7 +28,7 @@ export default function Blog({ posts }) {
     return (
         <>
             <Head>
-                <title>Contentlayer Blog</title>
+                <title>Chloe's Blog</title>
             </Head>
             <div >
 

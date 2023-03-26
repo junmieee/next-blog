@@ -17,11 +17,11 @@ const LayoutWrapper = ({ children }) => {
 
     return (
         <SectionContainer>
-            <div className="flex h-screen flex-col justify-between">
-                <header className="flex items-center justify-between py-10">
+            <div className="relative flex h-screen flex-col ">
+                <header className="flex items-center justify-between py-10  ">
                     <div>
                         <Link href="/" >
-                            <div className="flex items-center justify-between">
+                            <div className="flex items-center flex-nowrap justify-between">
                                 <div className="mr-3">
                                     <FcAutomatic size={50} />
                                 </div>

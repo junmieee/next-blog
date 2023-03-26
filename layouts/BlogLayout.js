@@ -1,32 +1,24 @@
+import MDXComponent from '../components/MDXComponents';
+import { useMDXComponent } from 'next-contentlayer/hooks'
+
 import Head from 'next/head'
 import Link from 'next/link'
 import { format, parseISO } from 'date-fns'
 import { FcHome } from "react-icons/fc";
 
+
 function BlogLayout({ post }) {
-    // const MDXComponent = useMDXComponent(post.body.code)
+    const MDXContent = useMDXComponent(post.body.code)
+
+    console.log(post);
 
     return (
-        <>
-            <Head>
-                <title>{post.title}</title>
-            </Head>
-            <article className="mx-auto max-w-2xl py-16">
-                <div className="mb-6 text-center">
-                    <Link href="/" className="flex items-center justify-center	">
-                        <FcHome size={45} />
-                    </Link>
-                </div>
-                <div className="mb-6 text-center">
-                    <h1 className="mb-1 text-3xl font-bold">{post.title}</h1>
-                    <time dateTime={post.date} className="text-sm text-slate-600">
-                        {format(parseISO(post.date), 'LLLL d, yyyy')}
-                    </time>
-                </div>
-                <div className="cl-post-body" dangerouslySetInnerHTML={{ __html: post.body.html }} />
-            </article>
-        </>
+        <MDXComponent title={post.title} data={post.date}>
+            <MDXContent />
+        </MDXComponent>
+
     )
 }
 
 export default BlogLayout;
+

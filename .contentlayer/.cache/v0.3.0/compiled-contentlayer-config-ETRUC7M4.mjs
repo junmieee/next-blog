@@ -3,6 +3,7 @@ import { defineDocumentType, makeSource } from "contentlayer/source-files";
 var Blog = defineDocumentType(() => ({
   name: "Blog",
   filePathPattern: `blog/*.mdx`,
+  contentType: "mdx",
   fields: {
     title: {
       type: "string",
@@ -33,4 +34,4 @@ export {
   Blog,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-OFZSWCH6.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-ETRUC7M4.mjs.map
