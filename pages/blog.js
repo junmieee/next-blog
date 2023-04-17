@@ -4,15 +4,25 @@ import Head from 'next/head'
 import { allBlogs } from 'contentlayer/generated'
 import BlogCard from '../components/BlogCard'
 import { useState } from 'react'
+import { getSortedPostsData } from '../lib/posts'
 
 
 
-export const getStaticProps = async () => {
-    const posts = allBlogs.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
+// export const getStaticProps = async () => {
+//     const posts = allBlogs.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
+//     return {
+//         props: {
+//             posts
+//         },
+//     }
+// }
+
+export async function getStaticProps() {
+    const posts = getSortedPostsData()
     return {
         props: {
             posts
-        },
+        }
     }
 }
 
@@ -43,7 +53,7 @@ export default function Blog({ posts }) {
                             type="text"
                             onChange={(e) => setSearchValue(e.target.value)}
                             placeholder="Search posts..."
-                            className="flex item-start block w-full rounded-full border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-red-100	 focus:ring-red-100 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
+                            className="flex item-start block w-full rounded-full border border-gray-300 bg-gray-100	 px-4 py-2 text-gray-900 focus:border-red-100 focus:ring-red-100 dark:border-gray-900 dark:bg-gray-500/20 dark:border-gray-500 dark:text-gray-100"
                         />
                         <svg
                             className="absolute right-3 top-3 h-5 w-5 text-gray-400 dark:text-gray-300"

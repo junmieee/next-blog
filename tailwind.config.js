@@ -8,14 +8,14 @@ module.exports = {
   content: [
     './pages/**/*.js',
     './components/**/*.js',
-    // './layouts/**/*.js',
+    './layouts/*.js',
     './lib/**/*.js',
-    './data/**/*.mdx',
+    './posts/**/*.mdx',
   ],
   darkMode: 'class',
   theme: {
     extend: {
-      spacing: {
+      space: {
         '9/16': '56.25%',
       },
       lineHeight: {
