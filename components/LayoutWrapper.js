@@ -23,15 +23,25 @@ const LayoutWrapper = ({ children }) => {
         }
     }, []);
 
+
+    useEffect(() => {
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, [isDarkMode]);
+
+
     const themeModeHandle = (e) => {
         e.preventDefault();
         setIsDarkMode(!isDarkMode);
         localStorage.setItem('theme', !isDarkMode ? 'dark' : 'light');
-        document.documentElement.classList.toggle('dark'); // body의 dark 클래스를 토글(추가 또는 제거)
+        // document.documentElement.classList.toggle('dark'); // body의 dark 클래스를 토글(추가 또는 제거)
     };
 
     return (
-        <SectionContainer>
+        <SectionContainer >
             <div className="relative flex h-screen flex-col justify-between">
 
                 <header className="flex w-full px-5 xl:px-10 top-0 left-0 right-0 m-auto mx-auto max-w-5xl xl:max-w-4xl dark:bg-gray-800 bg-white h-10 items-center fixed z-50 justify-between py-10">
