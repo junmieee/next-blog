@@ -8,13 +8,13 @@ import { FcHome } from "react-icons/fc";
 
 
 function BlogLayout({ post }) {
-    const MDXContent = useMDXComponent(post.body.code)
+    const MDXBody = useMDXComponent(post.body.code)
 
     console.log(post);
 
     return (
         <MDXComponent title={post.title} data={post.date}>
-            <MDXContent />
+            <MDXBody />
         </MDXComponent>
 
     )
