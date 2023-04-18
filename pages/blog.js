@@ -28,6 +28,7 @@ export async function getStaticProps() {
 
 
 export default function Blog({ posts }) {
+    console.log('posts', posts)
     const [searchValue, setSearchValue] = useState('')
     const filteredPosts = posts.filter((p) => {
         const searchContent = p.title
