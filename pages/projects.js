@@ -3,19 +3,18 @@ import projectsData from "../data/ProjectsData"
 
 export default function Projects() {
     return (
-
-        <div className="-m-4 flex flex-wrap gap-px	" >
-            {projectsData.map((p) => (
-                <ProjectCard
-                    key={p.title}
-                    title={p.title}
-                    description={p.description}
-                    imgSrc={p.imgSrc}
-                    githubUrl={p.githubURl}
-                />
-            ))}
-
+        <div className='pt-6 justify-center '>
+            <div className="grid grid-cols-2 gap-6">
+                {projectsData.map((p) => (
+                    <ProjectCard
+                        key={p.title}
+                        title={p.title}
+                        description={p.description}
+                        imgSrc={p.imgSrc}
+                        githubUrl={p.githubURl}
+                    />
+                ))}
+            </div>
         </div>
-
     )
 }

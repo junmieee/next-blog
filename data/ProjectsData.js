@@ -7,7 +7,20 @@ const projectsData = [
 
     },
     {
-        title: 'Netflix Clone Project',
+        title: 'Trello',
+        description: 'dd',
+        imgSrc: '',
+        githubURl: '',
+
+    },
+    {
+        title: 'Trello',
+        description: 'dd',
+        imgSrc: '',
+        githubURl: '',
+
+    }, {
+        title: 'Trello',
         description: 'dd',
         imgSrc: '',
         githubURl: '',
