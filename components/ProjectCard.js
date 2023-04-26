@@ -9,10 +9,10 @@ const ProjectCard = ({ title, description, imgScr, githubUrl }) => {
                 <h3 className="text-gray-800 font-semibold text-lg mb-2">{title}</h3>
                 <p className="text-gray-600">{description}</p>
                 <div className="flex justify-between mt-4">
-                    <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-600 transition-colors duration-300">
+                    <a href="#" target="_blank" className="text-gray-500 hover:text-gray-600 transition-colors duration-300">
                         <FaGithub className="inline-block mr-1" />
                     </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-600 transition-colors duration-300">
+                    <a href="#" target="_blank" className="text-gray-500 hover:text-gray-600 transition-colors duration-300">
                         <FaExternalLinkAlt className="inline-block mr-1" />
                     </a>
                 </div>

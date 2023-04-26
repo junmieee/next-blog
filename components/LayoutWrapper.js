@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import headerNavLinks from '../data/headerNavLinks';
 import SectionContainer from './SectionContailner';
-import Footer from './Footer';
+import Footer from './Footer'
 import Image from 'next/image';
 import { FcAutomatic } from "react-icons/fc";
 import { BsFillSunFill, BsCloudMoonFill } from "react-icons/bs";
