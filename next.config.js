@@ -1,29 +1,3 @@
-// next.config.mjs
-
-// import { withContentlayer } from 'next-contentlayer'
-
-// export default withContentlayer({
-//     reactStrictMode: true,
-//     pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'bs.js'],
-//     eslint: {
-//         dirs: ['pages', 'components', 'lib', 'layouts', 'data'],
-//     },
-//     images: {
-//         domains: ['github.com'],
-//     },
-// })
-
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//     experimental: {
-//         appDir: true,
-//         mdxRs: true,
-//     },
-// }
-
-// const withMDX = require('@next/mdx')()
-// module.exports = withMDX(nextConfig)
-
 const withMDX = require('@next/mdx')({
     extension: /\.mdx?$/,
     options: {

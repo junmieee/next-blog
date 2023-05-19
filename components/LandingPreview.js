@@ -20,12 +20,8 @@ import Link from "next/link"
 
 
 export default function LandingPreview({ posts }) {
-
-
-
     return (
         <>
-
             <div className="flex w-full flex-col ">
                 <div className="flex justify-center relative items-center">
 
