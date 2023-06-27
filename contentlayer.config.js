@@ -10,13 +10,11 @@ export const Blog = defineDocumentType(() => ({
     fields: {
         title: {
             type: 'string',
-            // description: 'The title of the post',
             required: true,
         },
 
         date: {
             type: 'date',
-            // description: 'The date of the post',
             required: true,
         },
         description: { type: 'string', required: true },
@@ -25,7 +23,6 @@ export const Blog = defineDocumentType(() => ({
     computedFields: {
         url: {
             type: 'string',
-            // resolve: (post) => `/${post._raw.flattenedPath}`,
             resolve: post => post._raw.sourceFileName.replace(/\.mdx$/, ''),
         },
     },
