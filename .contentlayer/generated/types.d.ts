@@ -15,6 +15,7 @@ export type Blog = {
   type: 'Blog'
   title: string
   date: IsoDateTimeString
+  description: string
   thumbnail: string
   /** MDX file body */
   body: MDX

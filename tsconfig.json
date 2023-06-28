@@ -25,9 +25,14 @@
     }
   },
   "include": [
+    // "next-env.d.ts",
+    // "**/*.ts",
+    // "**/*.tsx",
+    // ".contentlayer/generated"
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    ".next/types/**/*.ts",
     ".contentlayer/generated"
   ],
   "exclude": [

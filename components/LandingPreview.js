@@ -9,16 +9,6 @@ import Link from "next/link"
 
 
 
-// export const getStaticProps = async () => {
-//     const posts = allBlogs.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
-//     return {
-//         props: {
-//             posts,
-//          },
-//     }
-// }
-
-
 export default function LandingPreview({ posts }) {
     return (
         <>
