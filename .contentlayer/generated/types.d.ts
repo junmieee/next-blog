@@ -19,7 +19,7 @@ export type Blog = {
   thumbnail: string
   /** MDX file body */
   body: MDX
-  url: string
+  slug: string
 }  
 
 /** Nested types */

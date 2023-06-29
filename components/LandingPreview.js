@@ -65,24 +65,10 @@ export default function LandingPreview({ posts }) {
 
                     {/* </div> */}
                     <div className="flex flex-col">
-                        {/* {posts.map((post, idx) => (
-                            <LatestComponent key={idx} {...post} />
-                        ))} */}
-
-                        {/* {posts.length >= 4 ? (
-                            <BlogCard posts={posts.slice(0, 5)} />) : (
-                            <BlogCard posts={posts} />
-                        )
-                        } */}
                         <LatestComponent posts={posts} />
 
                     </div>
                 </div>
-
-
-
-
-
             </div>
 
 
