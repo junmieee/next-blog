@@ -54,8 +54,8 @@ export default function LatestComponent({ posts }) {
                                         passHref
                                         aria-label={`Read "${title}"`}
                                     >
-                                        <div className="flex bg-cyan-800 h-10 w-36 rounded-2xl justify-center items-center">
-                                            <span className="text-slate-400  dark:hover:text-slate-200 over:text-primary-600 ease-in-out duration-200">Read more &rarr;</span>
+                                        <div className="flex bg-cyan-800 dark:hover:bg-cyan-700	 ease-in-out duration-200 hover:bg-cyan-700	 h-10 w-36 rounded-2xl justify-center items-center">
+                                            <span className="text-slate-100  ">Read more &rarr;</span>
                                         </div>
 
 

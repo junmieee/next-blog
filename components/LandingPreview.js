@@ -32,14 +32,13 @@ export default function LandingPreview({ posts }) {
                         <div className="mt-2 text-slate-50  ">
                             <TypeAnimation
                                 sequence={[
-                                    // Same String at the start will only be typed once, initially
-                                    'I am studying mainly with JavaScript',
+                                    'I am developing mainly with JavaScript',
                                     1000,
-                                    'I am studying mainly with React',
+                                    'I am developing mainly with React',
                                     1000,
-                                    'I am studying mainly with TypeScript',
+                                    'I am developing mainly with TypeScript',
                                     1000,
-                                    'I am studying mainly with NextJS',
+                                    'I am developing mainly with NextJS',
                                     1000,
                                 ]}
                                 speed={50}
