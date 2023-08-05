@@ -5,7 +5,8 @@ import { allBlogs } from 'contentlayer/generated'
 import BlogCard from '../../components/BlogCard'
 import { useState } from 'react'
 import { getSortedPostsData } from '../../lib/posts'
-
+import { motion } from 'framer-motion';
+import { allTags } from '../../constants/dataset'
 
 
 export async function getStaticProps() {
@@ -62,6 +63,17 @@ export default function Blog({ posts }) {
                             />
                         </svg>
                     </div>
+                    <motion.div className="mt-12" >
+                        <div>
+                            Tags<span className="ml-2 text-sm">({allTags.length})</span>
+                        </div>
+                        <div className="mt-4 flex flex-wrap gap-2">
+                            {allTags.map((tag, i) => (
+                                <div key={i} >{tag}</div>
+                            ))}
+                        </div>
+                    </motion.div>
+
                 </div>
 
                 {displayPosts.map((post, idx) => (
