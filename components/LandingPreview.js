@@ -6,15 +6,15 @@ import { allBlogs } from 'contentlayer/generated'
 import LatestComponent from "./LatestComponent"
 import { TypeAnimation } from 'react-type-animation';
 import Link from "next/link"
-
+import { allSeriesName, allBlogPosts, allTags, reducePost } from '../constants/dataset'
 
 
 export default function LandingPreview({ posts }) {
+
     return (
         <>
             <div className="flex w-full flex-col ">
                 <div className="flex justify-center relative items-center">
-
                     <Image
                         width={1000}
                         height={350}

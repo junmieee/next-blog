@@ -15,7 +15,9 @@ var Blog = defineDocumentType(() => ({
       required: true
     },
     description: { type: "string", required: true },
-    thumbnail: { type: "string", required: true }
+    thumbnail: { type: "string", required: true },
+    tags: { type: "list", required: true, of: { type: "string" } },
+    draft: { type: "boolean" }
   },
   computedFields: {
     slug: {
@@ -33,4 +35,4 @@ export {
   Blog,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-5VWM3WDD.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-2NXKFH43.mjs.map

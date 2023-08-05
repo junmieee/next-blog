@@ -2,9 +2,9 @@
 
 import Head from 'next/head'
 import { allBlogs } from 'contentlayer/generated'
-import BlogCard from '../components/BlogCard'
+import BlogCard from '../../components/BlogCard'
 import { useState } from 'react'
-import { getSortedPostsData } from '../lib/posts'
+import { getSortedPostsData } from '../../lib/posts'
 
 
 

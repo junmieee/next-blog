@@ -20,6 +20,10 @@ export const Blog = defineDocumentType(() => ({
         },
         description: { type: 'string', required: true },
         thumbnail: { type: 'string', required: true },
+        tags: { type: 'list', required: true, of: { type: 'string' } },
+        draft: { type: 'boolean' },
+
+
     },
     computedFields: {
         slug: {

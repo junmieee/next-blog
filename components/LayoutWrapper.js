@@ -1,6 +1,6 @@
 
 import Link from 'next/link'
-import headerNavLinks from '../data/headerNavLinks';
+import headerNavLinks from '../constants/data/headerNavLinks';
 import SectionContainer from './SectionContailner';
 import Footer from './Footer'
 import Image from 'next/image';
@@ -44,7 +44,7 @@ const LayoutWrapper = ({ children }) => {
         <SectionContainer >
             <div className="relative flex h-screen flex-col justify-between">
 
-                <header className="flex w-full px-5 xl:px-10 top-0 left-0 right-0 m-auto mx-auto max-w-5xl xl:max-w-4xl dark:bg-gray-800 bg-white h-10 items-center fixed z-50 justify-between py-10">
+                <header className="flex w-full px-5 xl:px-10 top-0 left-0 right-0 m-auto mx-auto max-w-5xl xl:max-w-4xl dark:bg-zinc-900 bg-white h-5	 items-center fixed z-50 justify-between py-10">
                     <div>
                         <Link href="/" >
                             <div className="flex items-center flex-nowrap justify-between">
