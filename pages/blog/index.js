@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { allTags } from '../../constants/dataset'
 import Tag from '../../components/Tag';
 import Divider from '../../components/divider';
+import Title from '../../components/Title';
 
 
 export async function getStaticProps() {
@@ -37,10 +38,7 @@ export default function Blog({ posts }) {
             <div >
 
                 <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-
-                    <h1 className="flex item-start text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-                        Blog
-                    </h1>
+                    <Title title="Blog" />
                     <div className="relative max-w-lg">
                         <input
                             aria-label="Search articles"
