@@ -1,12 +1,13 @@
 // pages/index.js
 
 import Head from 'next/head'
-import { allBlogs } from 'contentlayer/generated'
 import BlogCard from '../../components/BlogCard'
 import { useState } from 'react'
 import { getSortedPostsData } from '../../lib/posts'
 import { motion } from 'framer-motion';
 import { allTags } from '../../constants/dataset'
+import Tag from '../../components/Tag';
+import Divider from '../../components/divider';
 
 
 export async function getStaticProps() {
@@ -63,19 +64,22 @@ export default function Blog({ posts }) {
                             />
                         </svg>
                     </div>
-                    <motion.div className="mt-12" >
-                        <div>
+                    <motion.div className="mt-14" >
+                        <div className='mb-4 mt-8 text-3xl font-extrabold tracking-tight sm:text-5xl text-gray-900 dark:text-gray-100'>
                             Tags<span className="ml-2 text-sm">({allTags.length})</span>
                         </div>
                         <div className="mt-4 flex flex-wrap gap-2">
                             {allTags.map((tag, i) => (
-                                <div key={i} >{tag}</div>
+                                <Tag key={i} tag={tag}>{tag}</Tag>
                             ))}
                         </div>
                     </motion.div>
+                    <Divider />
 
                 </div>
-
+                <h1 className="item-start text-lg font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-3xl md:leading-14">
+                    All Posts <span className="ml-2 text-sm">({posts.length})</span>
+                </h1>
                 {displayPosts.map((post, idx) => (
                     <BlogCard key={idx} {...post} />
                 ))}

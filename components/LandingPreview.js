@@ -61,8 +61,6 @@ export default function LandingPreview({ posts }) {
                     <h1 className="text-3xl mt-10 mb-5 font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
                         Latest
                     </h1>
-
-                    {/* </div> */}
                     <div className="flex flex-col">
                         <LatestComponent posts={posts} />
 

@@ -30,6 +30,10 @@ module.exports = {
       colors: {
         primary: colors.teal,
         gray: colors.neutral,
+        orange: 'rgba(255, 148, 117, 0.13)',
+      },
+      dropShadow: {
+        basic: '0px 0px 15px #FF9475',
       },
       typography: (theme) => ({
         DEFAULT: {

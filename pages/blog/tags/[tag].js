@@ -1,4 +1,9 @@
 import { allSeriesName, allBlogPosts, allTags, reducePost } from '../../../constants/dataset'
+import { fadeIn, fadeInUp } from '../../../constants/animation'
+import { motion } from 'framer-motion'
+import PostListItem from '../../../components/PostListItem';
+import Divider from '../../../components/divider';
+
 
 
 export const getStaticPaths = () => {
@@ -21,17 +26,23 @@ export const getStaticProps = ({ params }) => {
 export default function Home({ tag, posts }) {
     return (
         <>
-            <div>
+            <div className='flex mt-10 items-end text-gray-900 dark:text-gray-100 gap-4 mb-4 text-3xl font-extrabold tracking-tight sm:text-5xl'>
+                Tags - {tag}
+                <p className="flex text-xl font-bold">
+                    ({posts.length})
+                </p>
+            </div>
+            <Divider />
+            <div className="w-full">
                 {posts.map((post) => (
-                    <div key={post.slug}>
-                        <div className='text-yellow-400 hover:drop-shadow-base hover:shadow-cyan-500/50'>{post.title}</div>
-                        <p>{post.description}</p>
-                    </div>
+                    <motion.div key={post.slug} variants={fadeInUp}>
+                        <motion.div variants={fadeIn} initial="initial" whileInView="animate">
+                            <PostListItem post={post} tag={tag} />
+                        </motion.div>
+                    </motion.div>
                 ))}
             </div>
-            <div>
-                {tag}
-            </div>
+
         </>
     )
 
