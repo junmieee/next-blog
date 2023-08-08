@@ -14,8 +14,9 @@ function BlogLayout({ post }) {
         <>
             <MDXComponent post={post} title={post.title} data={post.date}>
                 <MDXBody />
-                <Giscus />
             </MDXComponent>
+            <Giscus />
+
         </>
 
 
