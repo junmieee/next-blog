@@ -1,7 +1,5 @@
 import { title } from "process";
 import Link from "next/link";
-import { allBlogs } from 'contentlayer/generated'
-import { compareDesc, format, parseISO } from 'date-fns'
 import IconWithText from "./IconWithText";
 import dayjs from 'dayjs';
 import { AiOutlineCalendar } from "react-icons/ai";
@@ -17,49 +15,35 @@ export default function LatestComponent({ posts }) {
                     <ul className="divide-y divide-gray-200 dark:divide-gray-700">
                         <Link
                             key={slug}
-                            href={`/blog/${slug}`}
-
-                        >
-                            <li className="py-8">
-                                <div className="space-y-2 xl:grid xl:items-baseline xl:space-y-0 hover:drop-shadow-basic">
-                                    <div className="flex xl:col-span-3 space-y-5">
-                                        <div className="w-10/12 ">
-                                            <div>
-                                                <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                                                    <div
-                                                        href={`/blog/${slug}`}
-
-                                                        className="text-gray-900 dark:text-gray-100"
-                                                    >
-                                                        {title}
-                                                    </div>
-                                                </h2>
-
+                            href={`/blog/${slug}`}>
+                            <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+                                <li className="py-8">
+                                    <div className="space-y-2 xl:grid xl:items-baseline xl:space-y-0 hover:drop-shadow-basic">
+                                        <div className="flex xl:col-span-3 space-y-5">
+                                            <div className="w-10/12 ">
+                                                <div>
+                                                    <h2 className="text-2xl font-bold leading-8 tracking-tight">
+                                                        <div className="text-gray-900 dark:text-gray-100"
+                                                        >
+                                                            {title}
+                                                        </div>
+                                                    </h2>
+                                                </div>
+                                                <div className="text-gray-500 dark:text-gray-400 pt-3">
+                                                    {description}
+                                                </div>
                                             </div>
-                                            <div className="text-gray-500 dark:text-gray-400 pt-3">
-                                                {description}
-                                            </div>
-
-                                        </div>
-                                        <div className="flex right-0 leading-6">
-                                            <Link
-                                                href={`/blog/${slug}`}
-
-                                                aria-label={`Read "${title}"`}
-                                            >
-
+                                            <div className="flex right-0 leading-6">
                                                 <IconWithText Icon={AiOutlineCalendar} size={14} text={formattedDate} />
-
-                                            </Link>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
+                            </ul>
                         </Link>
                     </ul>
                 )
             })}
         </div>
-
     )
 }

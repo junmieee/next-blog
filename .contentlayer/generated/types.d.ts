@@ -22,6 +22,20 @@ export type Blog = {
   /** MDX file body */
   body: MDX
   slug: string
+}
+
+export type Note = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'Note'
+  title: string
+  date: IsoDateTimeString
+  tags: string[]
+  /** MDX file body */
+  body: MDX
+  url_path: string
+  pathSegments: json
 }  
 
 /** Nested types */
@@ -32,8 +46,8 @@ export type Blog = {
 export type AllTypes = DocumentTypes | NestedTypes
 export type AllTypeNames = DocumentTypeNames | NestedTypeNames
 
-export type DocumentTypes = Blog
-export type DocumentTypeNames = 'Blog'
+export type DocumentTypes = Blog | Note
+export type DocumentTypeNames = 'Blog' | 'Note'
 
 export type NestedTypes = never
 export type NestedTypeNames = never
@@ -55,6 +69,7 @@ declare global {
 
 export type DocumentTypeMap = {
   Blog: Blog
+  Note: Note
 }
 
 export type NestedTypeMap = {

@@ -23,8 +23,6 @@ export async function getStaticProps() {
   }
 }
 
-
-
 export default function Home({ posts }) {
   return (
     <div>
