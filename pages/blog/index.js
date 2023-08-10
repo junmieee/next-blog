@@ -9,6 +9,7 @@ import { allBlogTags } from '../../constants/dataset'
 import Tag from '../../components/Tag';
 import Divider from '../../components/divider';
 import Title from '../../components/Title';
+import { popUp, FadeContainer, staggerHalf, fadeInUp, fadeIn } from '../../lib/animtaion'
 
 
 export async function getStaticProps() {
@@ -24,11 +25,31 @@ export async function getStaticProps() {
 export default function Blog({ posts }) {
     console.log('posts', posts)
     const [searchValue, setSearchValue] = useState('')
-    const filteredPosts = posts.filter((p) => {
+    const [selectedTag, setSelectedTag] = useState(null);
+
+    const filteredSearchPosts = posts.filter((p) => {
         const searchContent = p.title
         return searchContent.toLowerCase().includes(searchValue.toLowerCase())
-    })
-    const displayPosts = !searchValue ? posts : filteredPosts
+    });
+
+    const onTagClick = (tag) => {
+        if (selectedTag === tag) {
+            setSelectedTag(null);
+        } else {
+            setSelectedTag(tag);
+        }
+        setSearchValue('');
+    };
+
+    const filteredPosts = filteredSearchPosts.filter((post) => {
+        if (selectedTag === null) {
+            return true;
+        } else {
+            return post.tags.includes(selectedTag);
+        }
+    });
+
+
 
     return (
         <>
@@ -45,7 +66,7 @@ export default function Blog({ posts }) {
                             type="text"
                             onChange={(e) => setSearchValue(e.target.value)}
                             placeholder="Search posts..."
-                            className="flex item-start w-full rounded-full border border-gray-300 bg-gray-100	 px-4 py-2 text-gray-900 focus:border-red-100 focus:ring-red-100 dark:border-gray-900 dark:bg-gray-500/20 dark:border-gray-500 dark:text-gray-100"
+                            className="flex item-start w-full rounded-full border border-gray-300 bg-gray-100 px-4 py-2 text-gray-900 focus:border-red-100 focus:ring-red-100 dark:border-gray-900 dark:bg-gray-500/20 dark:border-gray-500 dark:text-gray-100"
                         />
                         <svg
                             className="absolute right-3 top-3 h-5 w-5 text-gray-400 dark:text-gray-300"
@@ -67,8 +88,9 @@ export default function Blog({ posts }) {
                             Tags<span className="ml-2 text-sm">({allTags.length})</span>
                         </div> */}
                         <div className="mt-4 flex flex-wrap gap-2">
+                            <Tag tag="All" onClick={() => setSelectedTag(null)} />
                             {allBlogTags.map((tag, i) => (
-                                <Tag key={i} tag={tag}>{tag}</Tag>
+                                <Tag key={i} tag={tag} onClick={() => onTagClick(tag)}>{tag}</Tag>
                             ))}
                         </div>
                     </motion.div>
@@ -76,11 +98,23 @@ export default function Blog({ posts }) {
 
                 </div>
                 <h1 className="item-start text-lg font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-3xl md:leading-14">
-                    All Posts <span className="ml-2 text-sm">({posts.length})</span>
+                    All Posts <span className="ml-2 text-sm">({filteredPosts.length})</span>
                 </h1>
-                {displayPosts.map((post, idx) => (
-                    <BlogCard key={idx} {...post} />
+
+                {filteredPosts.map((post, idx) => (
+                    <motion.div key={post.slug}>
+                        <motion.div
+                            variants={fadeInUp}
+                            initial="initial"
+                            whileInView="animate"
+                            exit="exit"
+                            viewport={{ amount: 0.8, once: true }}
+                        >
+                            <BlogCard key={idx} {...post} />
+                        </motion.div>
+                    </motion.div>
                 ))}
+
 
             </div>
         </>

@@ -4,6 +4,8 @@ import { compareDesc, format, parseISO } from 'date-fns'
 import { AiOutlineCalendar } from "react-icons/ai";
 import IconWithText from "./IconWithText";
 import dayjs from 'dayjs';
+import { motion } from "framer-motion";
+import { FadeContainer, popUp, popUpY } from "lib/animtaion";
 
 
 const BlogCard = (post) => {
@@ -11,10 +13,13 @@ const BlogCard = (post) => {
 
     return (
         <ul role="list">
+            <li
 
-            <li className="group/item hover:bg-orange dark:hover:bg-gray-700	rounded-3xl transition duration-0 hover:duration-250">
+                className="group/item hover:bg-orange dark:hover:bg-gray-700 rounded-3xl transition duration-0 hover:duration-250">
                 <Link href={'/blog/' + post.slug} >
-                    <div className="flex items-center w-full rounded-lg my-4 p-4 cursor-pointer">
+                    <motion.div
+
+                        className="flex items-center w-full rounded-lg my-4 p-4 cursor-pointer">
                         <div className="flex flex-col flex-auto	items-start ">
 
                             <h2 className="text-2xl	font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 ">
@@ -38,7 +43,7 @@ const BlogCard = (post) => {
 
                         />
 
-                    </div>
+                    </motion.div>
 
 
                 </Link >

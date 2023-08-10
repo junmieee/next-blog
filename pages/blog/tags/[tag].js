@@ -1,8 +1,9 @@
 import { allSeriesName, allBlogPosts, allBlogTags, reducePost } from '../../../constants/dataset'
-import { fadeIn, fadeInUp } from '../../../constants/animation'
+// import { fadeIn, fadeInUp } from '../../../constants/animation'
 import { motion } from 'framer-motion'
 import PostListItem from '../../../components/PostListItem';
 import Divider from '../../../components/divider';
+import { fadeIn, fadeInUp } from '../../../lib/animtaion';
 
 
 
