@@ -2,13 +2,7 @@ import { NotionAPI } from 'notion-client';
 import * as React from 'react';
 import { useState } from 'react';
 import { NotionRenderer } from 'react-notion-x';
-// import { Code } from 'react-notion-x/build/third-party/code'
-// import { Collection } from 'react-notion-x/build/third-party/collection'
-// import { Equation } from 'react-notion-x/build/third-party/equation'
-// import { Modal } from 'react-notion-x/build/third-party/modal'
-// import { Pdf } from 'react-notion-x/build/third-party/pdf'
 import 'react-notion-x/src/styles.css'
-
 import Title from '../components/Title';
 import dynamic from 'next/dynamic'
 

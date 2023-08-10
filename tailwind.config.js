@@ -34,6 +34,7 @@ module.exports = {
       },
       dropShadow: {
         basic: '0px 0px 15px #FF9475',
+        bold: '0px 15px 15px #FF9475',
       },
       typography: (theme) => ({
         DEFAULT: {

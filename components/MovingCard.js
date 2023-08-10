@@ -2,7 +2,8 @@ import React, { CSSProperties, useCallback, useRef, useState } from "react";
 import styled from "styled-components";
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
-
+import { motion } from 'framer-motion'
+import { popUp } from "../lib/animtaion"
 
 const SCard = styled.div`
   user-select: none;
@@ -92,7 +93,6 @@ const MovingCard = ({
                 </Content>
             </View>
         </SCard>
-
 
     )
 }

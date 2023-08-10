@@ -9,16 +9,26 @@ import 'prismjs/themes/prism-tomorrow.css'
 import 'katex/dist/katex.min.css'
 import LayoutWrapper from '../components/LayoutWrapper'
 import { ThemeProvider } from "next-themes"
-
+import { AnimatePresence } from 'framer-motion';
+import AnimatedPage from 'components/AnimatedPage'
+import { useRouter } from "next/router"
 
 export default function App({ Component, pageProps }) {
+    const router = useRouter();
+
 
     return (
         <ThemeProvider attribute="class" >
-            <LayoutWrapper>
-                <Component {...pageProps} />
-            </LayoutWrapper>
+            {/* <AnimatePresence  > */}
+            <AnimatedPage>
+                <LayoutWrapper>
+                    <Component {...pageProps} />
+                </LayoutWrapper>
+            </AnimatedPage>
+            {/* </AnimatePresence> */}
         </ThemeProvider>
+
+
 
     )
 }
