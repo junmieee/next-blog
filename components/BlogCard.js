@@ -14,7 +14,6 @@ const BlogCard = (post) => {
     return (
         <ul role="list">
             <li
-
                 className="group/item hover:bg-orange dark:hover:bg-gray-700 rounded-3xl transition duration-0 hover:duration-250">
                 <Link href={'/blog/' + post.slug} >
                     <motion.div

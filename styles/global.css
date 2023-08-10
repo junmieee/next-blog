@@ -17,6 +17,10 @@ body .no-underline {
   @apply hidden;
 }
 
+.notion-page{
+  width: 100%; 
+  margin: 0 auto;
+}
 .task-list-item {
   @apply list-none;
 }

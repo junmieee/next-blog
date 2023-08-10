@@ -1,4 +1,4 @@
-import { allBlogs } from 'contentlayer/generated'
+import { allBlogs, allNotes } from 'contentlayer/generated'
 import BlogLayout from '../../layouts/BlogLayout'
 
 
@@ -21,6 +21,7 @@ export const getStaticProps = async ({ params }) => {
 
 
 const PostPage = ({ post }) => {
+    console.log('allNotes', allNotes)
     return <BlogLayout post={post} />
 }
 

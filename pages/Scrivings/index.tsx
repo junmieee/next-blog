@@ -11,6 +11,7 @@ import { popUp, FadeContainer } from '../../lib/animtaion'
 import MovingCard from 'components/MovingCard';
 import { useState } from 'react';
 import Divider from 'components/divider'
+import Link from 'next/link';
 
 
 export const allSeriesName = allNotes
@@ -62,21 +63,25 @@ export default function Note({ }) {
                 {filteredNotes.map((post, idx) => {
                     return (
                         <>
-                            <motion.div
-                                variants={popUp}
-                                // initial="hidden"
-                                // whileInView="visible"
-                                // key={idx}
-                                // whileTap="tap"
-                                className=" hover:drop-shadow-basic  dark:bg-darkPrimary group rounded-2xl flex origin-center transform items-center justify-center gap-4 rounded-sm border border-gray-300 p-4 dark:border-neutral-700 hover:dark:bg-darkSecondary sm:justify-start md:origin-top"
-                            >
-                                <div className="relative transition group-hover:scale-110 sm:group-hover:scale-100">
-                                    {post.title}
-                                </div>
-                                <p className=" select-none text-sm font-semibold sm:inline-flex md:text-base">
-                                    {/* {post.tags} */}
-                                </p>
-                            </motion.div>
+                            <Link href={'/scrivings/' + post.slug} >
+
+                                <motion.div
+
+                                    variants={popUp}
+                                    // initial="hidden"
+                                    // whileInView="visible"
+                                    // key={idx}
+                                    // whileTap="tap"
+                                    className=" hover:drop-shadow-basic  dark:bg-darkPrimary group rounded-2xl flex origin-center transform items-center justify-center gap-4 rounded-sm border border-gray-300 p-4 dark:border-neutral-700 hover:dark:bg-darkSecondary sm:justify-start md:origin-top"
+                                >
+                                    <div className="relative transition group-hover:scale-110 sm:group-hover:scale-100">
+                                        {post.title}
+                                    </div>
+                                    <p className=" select-none text-sm font-semibold sm:inline-flex md:text-base">
+                                        {/* {post.tags} */}
+                                    </p>
+                                </motion.div>
+                            </Link>
                         </>
                     )
                 })}

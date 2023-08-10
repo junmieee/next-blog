@@ -35,6 +35,7 @@ export type Note = {
   /** MDX file body */
   body: MDX
   url_path: string
+  slug: string
   pathSegments: json
 }  
 

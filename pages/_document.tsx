@@ -11,14 +11,22 @@ class MyDocument extends Document {
                 <Head>
                     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
                     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
-                    <script src="https://utteranc.es/client.js"
-                        repo="https://github.com/junmieee/next-blog.git"
-                        issue-term="pathname"
-                        label="Comments"
-                        theme="github-light"
+                    {/* <script src="https://giscus.app/client.js"
+                        data-repo="junmieee/next-blog"
+                        data-repo-id="R_kgDOJMyq2g"
+                        data-category="General"
+                        data-category-id="DIC_kwDOJMyq2s4CYZ4c"
+                        data-mapping="pathname"
+                        data-strict="0"
+                        data-reactions-enabled="1"
+                        data-emit-metadata="0"
+                        data-input-position="bottom"
+                        data-theme="preferred_color_scheme"
+                        data-lang="ko"
+                        data-loading="lazy"
                         crossorigin="anonymous"
                         async>
-                    </script>
+                    </script> */}
                 </Head>
                 {/* <body className="bg-white text-black antialiased dark:bg-gray-900 dark:text-white"> */}
                 <Main />

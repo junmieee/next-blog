@@ -39,7 +39,7 @@ export const Blog = defineDocumentType(() => ({
 
 export const Note = defineDocumentType(() => ({
     name: 'Note',
-    filePathPattern: `notes/**/*.mdx`,
+    filePathPattern: `scrivings/**/*.mdx`,
     contentType: 'mdx',
     fields: {
         title: {
@@ -57,6 +57,10 @@ export const Note = defineDocumentType(() => ({
         url_path: {
             type: 'string',
             resolve: post => post._raw.flattenedPath.replace(/pages\/?/, ''),
+        },
+        slug: {
+            type: 'string',
+            resolve: post => post._raw.sourceFileName.replace(/\.mdx$/, ''),
         },
         pathSegments: {
             type: 'json',

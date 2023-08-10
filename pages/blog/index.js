@@ -10,6 +10,7 @@ import Tag from '../../components/Tag';
 import Divider from '../../components/divider';
 import Title from '../../components/Title';
 import { popUp, FadeContainer, staggerHalf, fadeInUp, fadeIn } from '../../lib/animtaion'
+import { allNotes } from 'contentlayer/generated'
 
 
 export async function getStaticProps() {
@@ -49,7 +50,7 @@ export default function Blog({ posts }) {
         }
     });
 
-
+    console.log('allNotes', allNotes)
 
     return (
         <>

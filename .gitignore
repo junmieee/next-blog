@@ -12,6 +12,8 @@
 # contentlayer
 .contentlayer
 
+
+
 # next.js
 /.next/
 /out/
