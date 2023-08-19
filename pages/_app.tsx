@@ -25,22 +25,25 @@ export default function App({ Component, pageProps }) {
         }
     }, []);
 
+    useEffect(() => {
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+
+        }
+    }, [isDarkMode])
 
     const themeModeHandle = (e) => {
         e.preventDefault();
-        if (!isDarkMode) {
-            document.documentElement.classList.add('dark');
-            setIsDarkMode(true);
-        } else {
-            document.documentElement.classList.remove('dark');
-            setIsDarkMode(false);
-        }
+        localStorage.setItem('theme', !isDarkMode ? 'dark' : 'light');
+        setIsDarkMode(!isDarkMode)
     };
 
 
     return (
         <LayoutWrapper toggle={themeModeHandle}>
-            <Component {...pageProps} darkMode={isDarkMode} toggle={themeModeHandle} />
+            <Component {...pageProps} darkMode={isDarkMode} />
         </LayoutWrapper>
     )
 }

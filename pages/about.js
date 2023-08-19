@@ -40,7 +40,25 @@ export async function getStaticProps() {
 }
 
 export default function About({ recordMap, darkMode }) {
-    console.log('darkMode', darkMode)
+
+
+
+    // const [darkMode, setDarkMode] = useState(false);
+    // console.log('darkMode', darkMode)
+
+    // useEffect(() => {
+    //     if (typeof window !== 'undefined') {
+    //         const storedTheme = localStorage.getItem('theme');
+    //         setDarkMode(storedTheme === 'dark');
+    //         if (storedTheme === 'dark') {
+    //             setDarkMode(true)
+    //         } if (storedTheme === 'ligt') {
+    //             setDarkMode(false)
+    //         }
+    //     }
+    // }, []);
+
+
 
     return (
         <div>

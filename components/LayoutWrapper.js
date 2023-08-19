@@ -15,21 +15,51 @@ const LayoutWrapper = ({ children, toggle }) => {
         setSelectedLinkId(id);
     };
 
+
+    // const [isDarkMode, setIsDarkMode] = useState(false);
+
+    // useEffect(() => {
+    //     const storedTheme = localStorage.getItem('theme');
+    //     if (storedTheme === 'dark') {
+    //         setIsDarkMode(true);
+    //         document.documentElement.classList.add('dark');
+    //     } else {
+    //         setIsDarkMode(false);
+    //         document.documentElement.classList.remove('dark');
+    //     }
+    // }, []);
+
+
+    // useEffect(() => {
+    //     if (isDarkMode) {
+    //         document.documentElement.classList.add('dark');
+    //     } else {
+    //         document.documentElement.classList.remove('dark');
+    //     }
+    // }, [isDarkMode]);
+
+
+    // const themeModeHandle = (e) => {
+    //     e.preventDefault();
+    //     setIsDarkMode(!isDarkMode);
+    //     localStorage.setItem('theme', !isDarkMode ? 'dark' : 'light');
+
+    // }
+
+
     return (
         <SectionContainer >
             <div className="relative flex h-screen flex-col justify-between">
                 <header className="flex w-full px-5 xl:px-10 top-0 left-0 right-0 m-auto mx-auto max-w-5xl xl:max-w-5xl dark:bg-zinc-900 bg-white h-5 items-center fixed z-50 justify-between py-10">
                     <Link href="/" >
                         <div className="flex items-center flex-nowrap justify-between">
-                            <div className="">
-                                <Image
-                                    width={50}
-                                    height={50}
-                                    objectFit="cover"
+                            <Image
+                                width={50}
+                                height={50}
+                                objectFit="cover"
 
-                                    className="rounded-full"
-                                    src='/images/Home/tokyo.jpeg' />
-                            </div>
+                                className="rounded-full"
+                                src='/images/Home/tokyo.jpeg' />
                         </div>
                     </Link>
                     <div className="flex items-center text-base leading-5">
