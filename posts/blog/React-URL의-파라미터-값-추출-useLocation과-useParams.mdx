@@ -1,0 +1,149 @@
+---
+title: '[React] URL의 파라미터 값 추출 - useLocation과 useParams'
+date: '2022-12-26'
+description: '첫번 째 게시글 테스트입니다.'
+thumbnail: '/images/posts/first-post.jpeg'
+tags: 
+  - React
+  - useLocation과
+  - useParams
+draft: false
+---
+
+_해당 포스팅은 클론 프로젝트를 진행하며 react-router-dom 라이브러리를 사용해 URL 라우팅을 구현한 부분을 정리한 내용입니다. -
+
+
+
+### 📎 URL 파라미터?
+>URL 파라미터는 URL 경로 내에 변수를 포함하는 데 사용되며 search속성을 통해 쿼리 파라미터 값을 추출할 수 있다. /users/:userId 경로에서 :userId가 URL 파라미터를 나타낸다. 특정 정보를 URL 경로에 포함하여 서버와 클라이언트 간의 데이터 공유를 용이하게 한다.
+
+# 🏷 useLocation
+
+**`useLocation`** 은 현재 라우트의 위치 정보를 반환하는 훅으로 **`search`** 속성을 통해 쿼리 파라미터 값을 추출할 수 있다. 해당 정보는 URL 경로(path), 쿼리 문자열(query string), URL 상태(state)정보를 포함한다. 
+
+**`useLocation`** 은 아래와 같이 경로 정보를 담고 있는 객체를 리턴한다.
+
+
+```
+{
+pathname: '/search', 
+search: '?q=%EC%8A%A4%ED%8C%8C%EC%9D%B4%EB%8D%94%EB%A7%A8', 
+hash: '', 
+state: null, 
+key: 'default'
+}
+
+```
+
+아래의 예제 코드에서 **`useQuery`** 함수에서 **`useLoaction`** 훅을 사용해 현재 URL 정보를 가져온 다음, **`URLSearchParams`** 를 사용해 파라미터 값을 추출했다. 이 함수를 사용해 검색어를 가져올 수 있게 했다. 
+
+> 💡 **`URLSearchParams`**: URLSearchParams 객체는 현재 URL의 query string을 다룰 수 있는 인터페이스를 제공한다. get, set, append, delete, has 등의 메서드를 제공하므로, URL 파라미터를 다루는 다양한 기능을 구현할 수 있다.  [URLSearchParams - Mdn 공식문서](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) 
+
+```
+//Search.js
+const SearchPage = () => {
+
+const [searchResult, setSearchResult] = useState([]);
+
+
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+}
+let query = useQuery();
+const searchTerm = query.get("q");  // /search?q=${e.target.value}
+
+}
+```
+검색어를 가져온 다음 TMDB API에서 **`axios`** 라이브러리를 사용해 API 호출을 해 화면에 그려준다. 
+
+```
+//Search.js
+
+
+const SearchPage = () => {
+
+    const fetchSearchMovie = async (searchTerm) => {
+        try {
+            const response = await axios.get(`/search/multi?include_adult=false&query=${searchTerm}`);
+            setSearchResult(response.data.results);
+        } catch {
+            console.log('error');
+        }
+    }
+
+    return (
+        <section className='search-container'>
+            {searchResult.map((movie) => {
+                if (movie.backdrop_path !== null && movie.media_type !== "person") {
+                    const movieImageUrl = "https://image.tmdb.org/t/p/w500" + movie.backdrop_path;
+                    return (
+
+                        <>
+
+                            <div className='movie' key={movie.id}>
+                                <div className='movie__column-poster' onClick={() => handleClick(movie)} >
+                                    <img src={movieImageUrl} alt="movie" className='movie__poster' />
+                                </div>
+                            </div>
+                            {modalOpen && <DetailPage {...movieSelected} setModalOpen={setModalOpen} />}
+
+                        </>
+                    )
+                }
+            })}
+        </section>
+    )
+}
+
+
+
+```
+
+
+# 🏷 useParams
+useParams는 React Router v5부터 도입된 훅으로, **`동적라우팅`** 에서 사용되는 URL 파라미터 값을 추출하는 데 사용된다.
+
+'/users/:userId'와 같은 URL 경로를 가진 동적 라우팅의 경우 **`:userId`** 는 동적으로 변할 수 있는 파라미터 값이다. 이와 같은 URL경로에 매칭되는 경우 **`useParams`** 를 사용해 아래와 같이 URL 파라미터 값을 추출할 수 있다. 
+
+```
+import { useParams } from 'react-router-dom';
+
+function User() {
+  const { userId } = useParams();
+
+  return (
+    <div>User ID: {userId}</div>
+  );
+}
+```
+
+이렇게 추출된 파라미터 값을 이용해 **`userID`** 로 해당 유저의 정보를 서버에서 가져와 렌더링 할 수 있다. 
+
+```
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
+function User() {
+  const { userId } = useParams();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // 서버에서 userId에 해당하는 유저 정보를 가져온다.
+    fetch(`/api/users/${userId}`)
+      .then(response => response.json())
+      .then(data => setUser(data));
+  }, [userId]);
+
+  if (!user) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div>
+      <div>User ID: {user.id}</div>
+      <div>Name: {user.name}</div>
+      <div>Email: {user.email}</div>
+    </div>
+  );
+}
+```

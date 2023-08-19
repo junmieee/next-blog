@@ -1,9 +1,9 @@
 import React, { CSSProperties, useCallback, useRef, useState } from "react";
 import styled from "styled-components";
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import Image from 'next/image';
+import Link from "next/link";
 
-import { motion } from 'framer-motion'
-import { popUp } from "../lib/animtaion"
 
 const SCard = styled.div`
   user-select: none;
@@ -15,9 +15,6 @@ const SCard = styled.div`
 
 const Content = styled.div`
   position: absolute;
-  background-color: #f1f1f1;
-  color: #050505;
-  font-weight: bold;
   border-radius: 20px;
   width: 100%;
   height: 100%;
@@ -27,6 +24,7 @@ const Content = styled.div`
   justify-content: center;
   font-size: 24px;
   transition: transform 0.3s linear;
+  background-color: #f5f6fa;
 `;
 
 const View = styled.div`
@@ -43,7 +41,6 @@ const MovingCard = ({
     description = { description },
     imgSrc = { imgSrc },
     githubUrl = { githubURl },
-
 }) => {
     const [rotate, setRotate] = useState({ x: 0, y: 0 });
 
@@ -75,24 +72,30 @@ const MovingCard = ({
 
 
     return (
-        <SCard width={width} height={height}>
-            <View onMouseMove={onMousemoveHandler} onMouseLeave={onMouseleaveHandler}>
-                <Content style={style} className="hover:drop-shadow-basic transition duration-500 hover:ease-in-out duration-300	 bg-fuchsia-50	">
-                    <div className="w-8/12 h-5/6 items-center justify-items-center	">
-                        <h3 className="text-gray-800 font-semibold text-lg mb-2">{title}</h3>
-                        <p className="text-gray-600">{description}</p>
-                        <div className="flex justify-between mt-32">
-                            <a href="#" target="_blank" className="text-gray-500 hover:text-gray-600 transition-colors duration-300">
-                                <FaGithub className="inline-block mr-1" size={30} />
-                            </a>
-                            <a href="#" target="_blank" className="text-gray-500 hover:text-gray-600 transition-colors duration-300">
-                                <FaExternalLinkAlt className="inline-block mr-1" size={30} />
-                            </a>
+        <Link target="_blank" href={githubUrl} >
+            <SCard width={width} height={height} >
+                <View onMouseMove={onMousemoveHandler} onMouseLeave={onMouseleaveHandler}>
+                    <Content style={style} className="bg-gray-500 hover:drop-shadow-basic transition duration-500 hover:ease-in-out duration-300">
+                        <div className="w-8/12 h-5/6 items-center justify-items-center">
+                            <h3 className="text-gray-600 font-semibold text-xl mb-2">{title}</h3>
+                            <p className="text-gray-500 text-sm h-10">{description}</p>
+                            <Image src={imgSrc}
+                                className="rounded-xl shadow-lg shadow-slate-500 mt-4"
+                                width={500}
+                                height={300}
+                                alt="Netflix" />
+                            {/* <div cl ="#" target="_blank" className="text-gray-500 hover:text-gray-600 transition-colors duration-300">
+                                    <FaGithub className="inline-block mr-1" size={20} />
+                                </a>
+                                <a href="#" target="_blank" className="text-gray-500 hover:text-gray-600 transition-colors duration-300">
+                                    <FaExternalLinkAlt className="inline-block mr-1" size={20} />
+                                </a>
+                            </div> */}
                         </div>
-                    </div>
-                </Content>
-            </View>
-        </SCard>
+                    </Content>
+                </View>
+            </SCard>
+        </Link >
 
     )
 }

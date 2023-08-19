@@ -1,10 +1,11 @@
 import { NotionAPI } from 'notion-client';
-import * as React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useState } from 'react';
 import { NotionRenderer } from 'react-notion-x';
 import 'react-notion-x/src/styles.css'
 import Title from '../components/Title';
 import dynamic from 'next/dynamic'
+
 
 const Code = dynamic(() =>
     import('react-notion-x/build/third-party/code').then((m) => m.Code)
@@ -30,6 +31,7 @@ const Modal = dynamic(
     }
 )
 
+
 const notion = new NotionAPI();
 
 export async function getStaticProps() {
@@ -37,28 +39,12 @@ export async function getStaticProps() {
     return { props: { recordMap } };
 }
 
-export default function About({ recordMap }) {
-
-    const [darkMode, setDarkMode] = useState(false);
-    React.useEffect(() => {
-        const storedTheme = localStorage.getItem('theme');
-        console.log('storedTheme', storedTheme);
-        if (storedTheme === 'dark') {
-            setDarkMode(true);
-        } else {
-            setDarkMode(false);
-        }
-    }, []);
+export default function About({ recordMap, darkMode }) {
+    console.log('darkMode', darkMode)
 
     return (
         <div>
-            {/* <Head>
-        <meta name='description' content='React Notion X Minimal Demo' />
-
-        <title>About me</title>
-      </Head> */}
             <div className='flex justify-center items-center mb-10 '><Title title="About me" /></div>
-
             <NotionRenderer
                 recordMap={recordMap}
                 darkMode={darkMode}

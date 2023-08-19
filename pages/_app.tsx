@@ -9,26 +9,38 @@ import 'prismjs/themes/prism-tomorrow.css'
 import 'katex/dist/katex.min.css'
 import LayoutWrapper from '../components/LayoutWrapper'
 import { ThemeProvider } from "next-themes"
-import { AnimatePresence } from 'framer-motion';
-import AnimatedPage from 'components/AnimatedPage'
 import { useRouter } from "next/router"
+import { useEffect, useState } from 'react'
 
 export default function App({ Component, pageProps }) {
-    const router = useRouter();
+
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    useEffect(() => {
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme === 'dark') {
+            setIsDarkMode(true);
+        } else {
+            setIsDarkMode(false);
+        }
+    }, []);
+
+
+    const themeModeHandle = (e) => {
+        e.preventDefault();
+        if (!isDarkMode) {
+            document.documentElement.classList.add('dark');
+            setIsDarkMode(true);
+        } else {
+            document.documentElement.classList.remove('dark');
+            setIsDarkMode(false);
+        }
+    };
 
 
     return (
-        <ThemeProvider attribute="class" >
-            {/* <AnimatePresence  > */}
-            <AnimatedPage>
-                <LayoutWrapper>
-                    <Component {...pageProps} />
-                </LayoutWrapper>
-            </AnimatedPage>
-            {/* </AnimatePresence> */}
-        </ThemeProvider>
-
-
-
+        <LayoutWrapper toggle={themeModeHandle}>
+            <Component {...pageProps} darkMode={isDarkMode} toggle={themeModeHandle} />
+        </LayoutWrapper>
     )
 }

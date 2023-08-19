@@ -1,0 +1,227 @@
+---
+title: 'Redux-thunk와 Redux-saga 이해하기'
+date: '2022-12-24'
+description: 'Redux-thunk와 Redux-saga'
+thumbnail: '/images/posts/blog/Redux-thunk.webp'
+tags: 
+  - Redux-thunk
+  - Redux-saga
+draft: false
+
+---
+![](https://velog.velcdn.com/images/junmieee_/post/3d65bd7b-029f-4883-b82b-aac191638178/image.webp)
+
+
+_이 포스트는 인프런의 ZeroChoi님의 Nobird 프로젝트를 진행하며 Redux 미들웨어를 이해하기 위해서 정리한 내용입니다 . _
+
+> 🏷 Redux-saga와 Redux-thunk는 Redux 미들웨어로서, **비동기 작업**을 처리할 수 있게 하고 Redux Action을 핸들링하기 위한 라이브러리이다.
+
+# 💡Redux-thunk
+Redux-thunk는 Redux가 비동기 액션을 dispatch할 수 있게 도와주는 미들웨어이다.기본적으로 Redux는 액션객체만을 dispatch할 수 있지만 redux-thunk를 사용하여 비동기 작업을 처리하면, 액션 생성 함수를 일반 함수 대신 함수를 반환하는 함수로 만들 수 있다. 이렇게 하면 비동기 작업을 처리하고, 결과에 따라 다른 액션을 dispatch 할 수 있다. 
+
+✓ 일반적으로 Redux 액션 생성 함수는 다음과 같이 객체를 반환한다.
+```
+export const loadMyInfoRequest = () => ({
+  type: 'LOAD_MY_INFO_REQUEST'
+});
+
+```
+
+✓ Redux-thunk를 사용하면, 액션 생성 함수를 다음과 같이 함수를 반환하는 함수로 변경할 수 있다. loadMyInfo 함수는 dispatch 함수를 인자로 받고, 1초 후에 LOAD_MY_INFO_REQUEST 액션을 dispatch 한다. 이렇게 하면 액션 생성 함수 내부에서 비동기 작업을 처리할 수 있게 된다.
+
+```
+export const loadMyInfo = () => (dispatch) => {
+  setTimeout(() => {
+    dispatch(loadMyInfoRequest());
+  }, 1000);
+};
+```
+
+
+#### ☝🏿 아래는 Nobird 프로젝트를 진행하며 redux-thunk를 적용한 코드의 일부임.
+---
+
+> npm i redux-thunk
+
+아래와 같이 Redux-thunk 미들웨어를 Store에서 배열에 추가해주면 applyMiddleware의 인자로 들어가게 된다. 
+```
+//configureStore.js
+
+import { applyMiddleware, createStore, compose } from 'redux';
+import thunkMiddleware from 'redux-thunk'; // redux-thunk 미들웨어 import
+import { createWrapper } from 'next-redux-wrapper';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
+import reducer from '../reducers';
+
+
+const configureStore = () => {
+  const middlewares = [thunkMiddleware]; // redux-thunk 미들웨어 추가
+  const enhancer =
+    process.env.NODE_ENV === 'production'
+      ? compose(applyMiddleware(...middlewares))
+      : composeWithDevTools(applyMiddleware(...middlewares));
+  const store = createStore(reducer, enhancer);
+  return store;
+};
+
+const wrapper = createWrapper(configureStore, {
+  debug: process.env.NODE_ENV === 'development',
+});
+
+export default wrapper;
+```
+
+State의 초기 상태를 정의해 준다. 
+
+```
+export const initialState = {
+    loadMyInfoLoading: false, // 유저 정보 가져오기 시도
+    loadMyInfoDone: false,
+    loadMyInfoError: null,
+    }
+```
+
+action 타입을 정의해준 후 액션 함수를 생성하여 **LOAD_MY_INFO_REQUEST** 액션을 dispatch 한 후, API 요청을 보내고 요청이 성공하면 **LOAD_MY_INFO_SUCCESS** 액션을, 실패하면 **LOAD_MY_INFO_FAILURE** 액션을 dispatch 하도록 구현하였다. 
+
+```
+//액션 타입 정의
+export const LOAD_MY_INFO_REQUEST = 'LOAD_MY_INFO_REQUEST';
+export const LOAD_MY_INFO_SUCCESS = 'LOAD_MY_INFO_SUCCESS';
+export const LOAD_MY_INFO_FAILURE = 'LOAD_MY_INFO_FAILURE';
+
+
+// 액션 생성 함수
+export const loadMyInfo = () => {
+  return async (dispatch) => {
+    dispatch({ type: LOAD_MY_INFO_REQUEST });
+    try {
+      const response = await fetch('/api/myinfo');
+      const data = await response.json();
+      dispatch({ type: LOAD_MY_INFO_SUCCESS, data });
+    } catch (error) {
+      dispatch({ type: LOAD_MY_INFO_FAILURE, error });
+    }
+  };
+};
+
+
+//리듀서
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
+        case LOAD_MY_INFO_REQUEST:
+            return {
+                ...state,
+                loadMyInfoLoading: true,
+                loadMyInfoError: null,
+                loadMyInfoDone: false,
+            };
+        case LOAD_MY_INFO_SUCCESS:
+            return {
+                ...state,
+                loadMyInfoLoading: false,
+                me: action.data,
+                loadMyInfoDone: true,
+            };
+        case LOAD_MY_INFO_FAILURE:
+            return {
+                ...state,
+                loadMyInfoLoading: false,
+                loadMyInfoError: action.error,
+            };
+        default:
+            return state;
+    }
+};
+
+
+```
+
+---
+
+# 💡Redux-saga
+
+### 📎 Generator 
+Redux-saga에서는 generator(제네레이터) 함수를 이해해야 한다. 제네레이터 함수는 일반적인 함수와는 달리 실행 중 멈출 수 있고 결과값을 여러번 return 할 수 있다. 
+
+아래와 같이 yield를 통해 실행을 멈출 수 있다. 제네레이터 함수를 실행하려면 next함수를 호출해야 한다.
+
+```
+const gen = function* () {
+    console.log(1);
+    yield;
+    console.log(2);
+    yield;
+    console.log(3);
+    yield;
+    
+}
+ 
+ // 실행결과
+ generator.next()
+// {value: undefined, done: false}
+generator.next()
+// {value: undefined, done: false}
+generator.next()
+//{value: undefined, done: false}
+
+```
+
+### 📎 Effect 
+saga의 effect는 saga가 비동기 작업을 수행하는 동안 발생할 수 있는 여러 가지 사이드 이펙트(side effect)를 처리하는 방법이다.일반적으로 네트워크 요청, 파일 시스템 접근, 브라우저 쿠키 설정 등과 같은 작업을 처리할 때 사용한다.
+
+아래는 saga를 사용한 코드 예시이다. 
+* 루트 디렉토리에 sagas라는 폴더를 만들어 놓고 진행했다. 
+
+
+--- 
+
+loadMyInfoAPI 함수를 통해 /user 주소로 GET 요청을 보내서 사용자 정보를 가져오는 API를 호출한다.
+
+loadMyInfo 함수는 loadMyInfoAPI 함수를 호출하는 사가 제네레이터(generator) 함수이다. 이 함수는 Redux-Saga에서 사용되는 특수한 문법인 **`yield`** 를 사용하여 loadMyInfoAPI 함수가 비동기적으로 처리될 때까지 기다린 후에 결과를 받아온다.
+
+**`put`** 을 사용하여 Redux store에 액션을 dispatch한다(put이 ispatch의 기능을 한다고 보면 됨). type 속성에는 액션 타입이, data 속성에는 loadMyInfoAPI에서 받아온 데이터가 전달된다. 
+
+watchLoadMyInfo 함수는 LOAD_MY_INFO_REQUEST 액션이 발생할 때마다 loadMyInfo 함수를 호출하는 역할을 한다. **`takeLatest`** 는 가장 최근에 발생한 액션만 처리하고, 이전에 진행 중인 작업은 취소하는 함수다. 이를 사용하여 중복 요청을 방지하고, 최신 데이터만 받아올 수 있도록 한다.
+
+마지막으로, userSaga 함수에서 **`all`** 과 **`fork`** 를 사용하여 watchLoadMyInfo 함수를 포함한 여러 사가 함수들을 **`동시에`** 실행한다. 이를 통해 여러 개의 API 요청을 병렬적으로 처리할 수 있다.
+
+```
+//sagas > user.js
+
+function loadMyInfoAPI() {
+    return axios.get('/user'); // GET(Browser)
+}
+
+function* loadMyInfo() {
+    try {
+        const result = yield call(loadMyInfoAPI);
+        console.log(result);
+        yield put({
+            type: LOAD_MY_INFO_SUCCESS,
+            data: result.data,
+        });
+    } catch (err) {
+        console.error(err);
+        yield put({
+            type: LOAD_MY_INFO_FAILURE,
+            error: err.response.data,
+        });
+    }
+}
+
+function* watchLoadMyInfo() {
+    yield takeLatest(LOAD_MY_INFO_REQUEST, loadMyInfo);
+}
+
+
+export default function* userSaga() {
+    yield all([
+       	...
+        fork(watchLoadMyInfo),
+		...
+
+    ])
+}
+```
+

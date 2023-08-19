@@ -1,0 +1,108 @@
+---
+title: 참조형 - Object (객체)
+date: 2022-01-11
+tags: 
+- JavaScript
+- JS 데이터
+
+
+---
+
+## Object함수를 호출해 객체 데이터를 생성할 수 있음
+
+```jsx
+// Object(객체)
+
+const user = new Object();
+
+user.name = 'Chloe';
+user.age = 85;
+
+console.log(user);
+```
+
+![스크린샷 2023-01-13 오후 2.24.53.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1e904a83-46b2-4097-be32-42c725cf75c3/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-01-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_2.24.53.png)
+
+객체 데이터는 위와 같이 Key, Value형태로 만들어진다. 
+
+Key = 속성 = Property
+
+- 함수 내부에서 this라는 속성을 통해서 각각의 속성에 값을 추가하는 방식으로 객체 데이터를 만드는 방식도 있다.
+
+```jsx
+function User() {
+    this.name = 'Chloe'
+    this.age = 85
+};
+
+const user = new User()
+
+console.log(user);
+
+```
+
+![스크린샷 2023-01-13 오후 2.30.30.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/76ff6ee8-f898-4c7f-94d3-80493e051763/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-01-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_2.30.30.png)
+
+- 아래와 같이 객체 리터럴 방식으로 객체 생성- 대부분 해당 방법으로 객체를 생성함
+
+```jsx
+const user = {
+    name: 'Chloe',
+    age: 85
+};
+
+console.log(user);
+```
+
+![스크린샷 2023-01-13 오후 2.35.27.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/784b26e7-d0ad-4e3b-8f76-3b4e9373935b/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-01-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_2.35.27.png)
+
+아래와 같이 객체 데이터의 속성을 조회함. 두 방법 모두 동일한 형태로 출력됨
+
+```jsx
+console.log(user.name);
+console.log(user['name']);
+```
+
+![스크린샷 2023-01-13 오후 2.43.50.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9fc41652-e870-439e-9706-e01d43025531/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-01-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_2.43.50.png)
+
+아래와 같이 두 객체를 만들고 userB객체의 parent 속성에 UserA를 할당해보자 
+
+```jsx
+const userA = {
+    name: 'Chloe',
+    age: 85
+};
+
+const userB = {
+    name: 'Neo',
+    age: 22,
+    parent: userA
+};
+
+console.log(userB);
+```
+
+아래와 같이 조회됨
+
+![스크린샷 2023-01-13 오후 2.50.13.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e4cb70d5-86c6-4369-9c84-008bc2c79be6/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-01-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_2.50.13.png)
+
+userA의 Chloe라는 속성을 조회하려면 아래와 같이 입력할 수 있음 
+
+```jsx
+console.log(userB.parent.name);
+```
+
+대괄호 표기법은 아래와 같이 표기할 수도 있음 
+
+```jsx
+console.log(userB['parent'].name);
+console.log(userB['parent']['name']);
+```
+
++
+
+```jsx
+const users = [userA, userB]
+
+console.log(users[0].name);
+```

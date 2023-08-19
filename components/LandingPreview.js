@@ -21,7 +21,7 @@ export default function LandingPreview({ posts }) {
                         objectFit="cover"
 
                         className="object-cover w-full h-[350px] rounded-2xl  bg-no-repeat bg-cover"
-                        src={'/images/Home/Cover.jpeg'} />
+                        src={'/images/Home/Banner2.jpeg'} />
                     <div className="flex pl-14 flex-col hover:bg-gray-900/50 absolute opacity-0 hover:opacity-100 w-full h-full rounded-2xl transition ease-in-out duration-300 ">
                         <span className="text-6xl  font-bold md:text-3xl pt-14 text-slate-50	">
                             Chloe Shin 🦊

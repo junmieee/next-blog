@@ -3,39 +3,39 @@ import { useMDXComponent } from 'next-contentlayer/hooks'
 import Title from '../../components/Title';
 import { allScrivTags, allNotesPosts } from '../../constants/dataset'
 import Tag from '../../components/Tag';
-import BlogCard from '../../components/BlogCard';
-// const allSeriesName = allBlogs
-//     .map((post) => post.slug);
-import { motion } from 'framer-motion'
-import { popUp, FadeContainer } from '../../lib/animtaion'
-import MovingCard from 'components/MovingCard';
+import { AnimatePresence, motion } from 'framer-motion'
+import { FadeContainer } from '../../lib/animtaion'
 import { useState } from 'react';
 import Divider from 'components/divider'
 import Link from 'next/link';
 
 
-export const allSeriesName = allNotes
-    .map((blog) => blog.url_path
-        .split('/')[1]);
-
-
-
-export default function Note({ }) {
+export default function Note({ Notes }) {
+    // console.log('allNotes', allNotes)
+    // console.log('allSeriesName', allSeriesName)
     // console.log('allNotes', allNotes)
     const [selectedTag, setSelectedTag] = useState(null);
 
     const onTagClick = (tag) => {
         if (selectedTag === tag) {
             setSelectedTag(null);
-        }
-        else {
+        } else {
             setSelectedTag(tag);
         }
     };
 
+
+    const onAllTagClick = () => {
+        setSelectedTag(null);
+    };
+
     const filteredNotes = selectedTag
-        ? allNotesPosts.filter((note) => note.tags.includes(selectedTag))
+        ? allNotesPosts.filter((note) => note.tags.includes(String(selectedTag)))
         : allNotesPosts;
+
+
+
+    console.log('filteredNotes', filteredNotes)
 
     return (
         <>
@@ -46,12 +46,12 @@ export default function Note({ }) {
                 <span className="ml-2 text-sm">{filteredNotes.length}개의 Scrivings</span>
             </h1> */}
             <div className="mt-6 flex flex-wrap gap-2 py-4">
-                <Tag tag="All" onClick={() => setSelectedTag('All')} />
+                <Tag tag="All" onClick={onAllTagClick} selected={selectedTag === null} />
                 {allScrivTags.map((tag, i) => (
-                    <Tag key={i} tag={tag} onClick={() => onTagClick(tag)}>{tag}</Tag>
+                    <Tag key={i} tag={tag} onClick={() => onTagClick(tag)} selected={selectedTag === tag} />
                 ))}
             </div>
-            <Divider />
+            {/* <Divider /> */}
             <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -59,24 +59,21 @@ export default function Note({ }) {
                 viewport={{ once: true }}
                 className="my-10 grid grid-cols-2 gap-4 mt-14 "
             >
-                {filteredNotes.map((post, idx) => {
+
+                {filteredNotes.map((note, idx) => {
                     return (
                         <>
-                            <Link href={'/scrivings/' + post.slug} >
+                            <Link href={'/scrivings/' + note.slug} key={idx} >
                                 <motion.div
-                                    variants={popUp}
-                                    // initial="hidden"
-                                    // whileInView="visible"
-                                    // key={idx}
-                                    // whileTap="tap"
-                                    className=" hover:drop-shadow-basic  dark:bg-darkPrimary group rounded-2xl flex origin-center transform items-center justify-center gap-4 rounded-sm border border-6 border-gray-300 p-4 dark:border-neutral-700 hover:dark:bg-darkSecondary sm:justify-start md:origin-top"
+                                    className=" hover:drop-shadow-basic dark:bg-darkPrimary rounded-2xl flex transform justify-center gap-4 rounded-sm border border-6 border-gray-300 p-4 dark:border-neutral-700 hover:dark:bg-darkSecondary "
                                 >
-                                    <div className="relative transition group-hover:scale-110 sm:group-hover:scale-100 dark:text-gray-100 ">
-                                        <span className="ml-2 text-sm text-xl font-bold	">{post.title}</span>
-                                    </div>
-                                    <p className=" select-none text-sm font-semibold sm:inline-flex md:text-base">
-                                        {/* {post.tags} */}
-                                    </p>
+                                    <AnimatePresence mode="wait">
+                                        <div className=" transition group-hover:scale-110 sm:group-hover:scale-100 dark:text-gray-100  text-gray-600  ">
+                                            <span className="ml-2 text-sm text-xl font-bold">{note.title}</span>
+                                        </div>
+                                        <p className=" select-none text-sm font-semibold sm:inline-flex md:text-base">
+                                        </p>
+                                    </AnimatePresence>
                                 </motion.div>
                             </Link>
                         </>

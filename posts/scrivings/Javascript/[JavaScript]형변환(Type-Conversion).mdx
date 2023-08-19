@@ -1,0 +1,76 @@
+---
+title: 형 변환 (Type Conversion)
+date: 2022-01-11
+tags: 
+- JavaScript
+- JS 데이터
+---
+
+## 형, 즉 자바스크립트의 데이터 종류의 변환을 알아보자
+
+아래와 같은 코드를 콘솔에 출력해보자
+
+```jsx
+//형 변환(Type Conversion)
+
+const a = 1 // Number
+const b = '1' //String
+
+console.log(a === b);
+```
+
+![스크린샷 2023-01-13 오후 7.31.18.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/85c69d55-4b06-41ec-bbcd-6e86c5ee4796/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-01-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_7.31.18.png)
+
+위의 코드는 false라는 결과가 나왔다. 그럼 아래와 같은 코드를 콘솔에 출력해보자
+
+```jsx
+//형 변환(Type Conversion)
+
+const a = 1 // Number
+const b = '1' //String
+
+console.log(a == b);
+```
+
+![스크린샷 2023-01-13 오후 7.33.20.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e84b1464-c240-4f58-af8d-bdce0b770df2/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-01-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_7.33.20.png)
+
+위의 코드를 입력하면 true가 반환된다. 
+
+- ===는 ‘일치’연산자. ==는 ‘동등’연산자.
+
+—> 동등연산자를 사용했을 때는 형변환이 일어난다. 동등연산자는 a 와 b를 데이터 종류를 바꾸어가며 비교를 하게 된다. 
+
+아래의 코드를 출력해보자.
+
+```jsx
+//형 변환(Type Conversion)
+
+const a = 0
+const b = false
+
+console.log(a == b);
+```
+
+![스크린샷 2023-01-13 오후 7.38.57.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/43838da2-c02e-48b3-b222-c2836a0a7304/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-01-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_7.38.57.png)
+
+```jsx
+//형 변환(Type Conversion)
+
+const a = true
+const b = 1
+
+console.log(a == b);
+```
+
+![스크린샷 2023-01-13 오후 7.39.41.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b3d70520-2a08-4868-b573-3487196d516e/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-01-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_7.39.41.png)
+
+```jsx
+//형 변환(Type Conversion)
+
+const a = true
+const b = 1
+
+console.log(a === b);
+```
+
+![스크린샷 2023-01-13 오후 7.40.53.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fdeced7e-6c1e-4496-88a5-f49b735dc54c/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-01-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_7.40.53.png)

@@ -1,0 +1,227 @@
+---
+title: 'Next.js에 Redux 적용하기'
+date: '2022-12-24'
+description: 'Nextjs에 Redux 적용'
+thumbnail: '/images/posts/blog/Redux-Nextjs.png'
+tags: 
+  - Next.js
+  - Redux
+
+draft: false
+
+---
+
+# Redux
+
+# 🏷 Next.js에 Redux를 적용해 보자
+
+인프런에서 Zerochoi(제로초)님의 Nobird강좌를 수강하며 트위터와 비슷한 SNS 서비스를 구현하는 클론 프로젝트를 진행하는 중 Next.js에 Redux를 실제로 구현하는 내용을 코드 예제와 함께 기록해 보고자 한다.
+
+### 💁 Why Redux?
+
+그 전에 이 프로젝트에서 상태관리 라이브러리로 리덕스를 채택한 이유를 리덕스의 장단점을 통해 살펴보자. 
+
+프로젝트의 규모가 어느정도 이상이 되면 컴포넌트를 적절하게 분리해주는 것이 필수다. 컴포넌트가 작은 단위로 나누어 질수록 다른 컴포넌트에 데이터를 전달하는 것이 무척 까다로워 지는데 이를 해결하기 위해 중앙에서 데이터를 한 번에 관리할 수 있는 Redux, Mobx, ContextAPI 등의 상태관리 프로그램을 채택한다. 여러 가지 상태관리 프로그램 중 팀이나 본인의 성향에 맞게 취사 선택에서 사용하면 된다. 
+
+- Redux는 원리가 간단하기 때문에 에러가 날 수 있는 상황이 많이 없고 에러가 나더라고 추적이 잘 되어 앱이 안정적이여 진다.
+- action과 state를 이용해 디버깅이 쉬워져 추적이 용이해진다.
+- 대신 코드량이 다른 상태관리 프로그램에 비교해 많은 것이 단점이다.
+
+Next.js에서 Redux 적용을 간편하게 도와주는 Next Redux Wrapper 라이브러리를 사용해 진행한다. 
+
+ 
+
+```jsx
+//Next redux wrapper 설치
+npm i next-redux-wrapper
+```
+
+### 👍 본격적으로 Next.js프로젝트에 Redux를 적용해 보자.
+
+루트 폴더에 Store폴더를 만들고 그 안에 ConfigureStore.js파일을 생성해 준 후 아래와 같이 작성해 준다. 
+
+```jsx
+//ConfigureStore.js
+
+import { createWrapper } from 'next-redux-wrapper';
+
+// configureStore 여기에서는 일반 redux와 비슷
+const configureStore = () => {
+	
+   
+};
+
+// { debug: process.env.NODE_ENV === "development" }
+const wrapper = createWrapper(configureStore, {
+    debug: process.env.NODE_ENV === 'development',
+}); // 두번째는 옵션 객체
+
+export default wrapper
+```
+
+위의 코드로 기본적인 redux 세팅을 해 놓은 후 App.js에서 high order component로 wrapper로 감싸준다. 
+
+```jsx
+//app.js
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import 'antd/dist/antd.css';
+import Head from 'next/head';
+import wrapper from '../store/configureStore';
+
+const NodeBird = ({ Component }) => {
+    return (
+        <>
+            <Head>
+                <meta charSet='utf-8'></meta>
+                <title>NodeBird</title>
+            </Head>
+            <Component />
+        </>
+    );
+};
+
+NodeBird.prototype = {
+    Component: PropTypes.elementType.isRequired,
+}
+
+export default wrapper.withRedux(NodeBird);
+```
+
+<aside>
+💡 Next.js에 Redux를 적용할 때는 기존의 리액트에 Redux를 적용하는 것과는 다르게 Provider로 감싸주지 않는다. 예전 버전에서는 Provider로 감싸줬지만 Next.js 6버전 부터는 자체적으로 Provider로 감싸기 때문에 해당 코드가 필요 없다.
+
+</aside>
+
+```jsx
+
+//app.js
+
+...
+
+const NodeBird = ({ Component }) => {
+    return (
+        <>
+					<Provider store={store}> //
+            <Head>
+                <meta charSet='utf-8'></meta>
+                <title>NodeBird</title>
+            </Head>
+            <Component />
+					<Provider>
+        </>
+    );
+};
+
+NodeBird.prototype = {
+    Component: PropTypes.elementType.isRequired,
+}
+
+export default wrapper.withRedux(NodeBird)
+```
+
+configureStore.js에 Reducer를 정의 한 후 Reducer를 코드로 작성하자. 
+
+```jsx
+//ConfigureStore.js
+
+import { createWrapper } from 'next-redux-wrapper';
+
+import reducer from '../reducers'; //reducer 불러오기
+
+const configureStore = () => {
+		const store = createStore(reducer);
+		return store;
+   
+};
+
+const wrapper = createWrapper(configureStore, {
+    debug: process.env.NODE_ENV === 'development',
+}); // 두번째는 옵션 객체
+
+export default w
+```
+
+index.js 파일에서는 **`combineReducers`**함수를 사용하여 **`user`**와 **`post`**두 개의 Reducer를 합쳤다. **`combineReducers`**함수는 여러 개의 Reducer 함수를 받아서 하나로 합친 새로운 Reducer 함수를 반환한다.
+
+```jsx
+//Reducers > index.js
+
+import { HYDRATE } from 'next-redux-wrapper';
+import { combineReducers } from 'redux';
+
+import user from './user';
+import post from './post';
+
+// (이전상태, 액션) => 다음상태
+const rootReducer = (state, action) => {
+    switch (action.type) {
+        case HYDRATE:
+            console.log('HYDRATE', action);
+            return action.payload;
+        default: {
+            const combinedReducer = combineReducers({
+                user,
+                post,
+            });
+            return combinedReducer(state, action);
+        }
+    }
+};
+
+export default rootReducer;
+```
+
+
+
+✓ **`initialState`**객체는 **`user`** Reducer의 초기 상태를 정의한다. 이 객체는**`mainPosts`**, **`singlePost`**, **`imagePaths`** 를 포함한 상태 프로퍼티를 가지고 있다. 
+
+✓ **`LOAD_POST_REQUEST`**, **`LOAD_POST_SUCCESS`**, **`LOAD_POST_FAILURE`** 상수는 **`user`** Reducer에서 사용되는 액션 타입을 정의한다. 
+
+✓ **`reducer`**함수는 이전 상태(**`state`**)와 액션(**`action`**)을 받아서 새로운 상태를 반환한다. 해당 코드는 **`immer`**라이브러리의 **`produce`**함수를 사용하여 불변성을 유지하면서 새로운 상태를 만들고 있다. **`produce`**함수 내부에서는 **`draft`**라는 객체를 수정하면서 새로운 상태를 만든다. **`draft`**객체는 이전 상태와 똑같은 구조를 가지고 있지만, 수정이 가능한 객체이다.
+
+```
+//user.js
+
+import produce from 'immer';
+
+
+export const initialState = {
+    mainPosts: [],
+    singlePost: null,
+    imagePaths: [],
+...
+}
+
+
+export const LOAD_POST_REQUEST = 'LOAD_POST_REQUEST';
+export const LOAD_POST_SUCCESS = 'LOAD_POST_SUCCESS';
+export const LOAD_POST_FAILURE = 'LOAD_POST_FAILURE';
+
+...
+
+const reducer = (state = initialState, action) => produce(state, (draft) => {
+
+... 
+
+		case LOAD_POST_REQUEST:
+		            draft.loadPostLoading = true;
+		            draft.loadPostDone = false;
+		            draft.loadPostError = null;
+		            break;
+		        case LOAD_POST_SUCCESS:
+		            draft.loadPostLoading = false;
+		            draft.loadPostDone = true;
+		            draft.singlePost = action.data;
+		            break;
+		        case LOAD_POST_FAILURE:
+		            draft.loadPostLoading = false;
+		            draft.loadPostError = action.error;
+		            break;
+
+
+... 
+
+}
+```

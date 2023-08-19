@@ -2,8 +2,7 @@ import ProjectCard from "../components/ProjectCard"
 import Title from "../components/Title"
 import projectsData from "../constants/data/ProjectsData"
 import MovingCard from '../components/MovingCard'
-import { motion } from 'framer-motion'
-import { popUp } from "../lib/animtaion"
+
 
 export default function Projects() {
     return (

@@ -50,7 +50,7 @@ export default function Blog({ posts }) {
         }
     });
 
-    console.log('allNotes', allNotes)
+    // console.log('allNotes', allNotes)
 
     return (
         <>
@@ -67,7 +67,7 @@ export default function Blog({ posts }) {
                             type="text"
                             onChange={(e) => setSearchValue(e.target.value)}
                             placeholder="Search posts..."
-                            className="flex item-start w-full rounded-full border border-gray-300 bg-gray-100 px-4 py-2 text-gray-900 focus:border-red-100 focus:ring-red-100 dark:border-gray-900 dark:bg-gray-500/20 dark:border-gray-500 dark:text-gray-100"
+                            className="flex item-start w-full rounded-full border border-gray-300 bg-gray-100 px-4 py-2 text-gray-900 focus:border-red-100  focus:ring-2 focus:ring-red-100   dark:border-gray-900 dark:bg-gray-500/20 dark:border-gray-500 dark:text-gray-100"
                         />
                         <svg
                             className="absolute right-3 top-3 h-5 w-5 text-gray-400 dark:text-gray-300"
@@ -89,9 +89,9 @@ export default function Blog({ posts }) {
                             Tags<span className="ml-2 text-sm">({allTags.length})</span>
                         </div> */}
                         <div className="mt-4 flex flex-wrap gap-2">
-                            <Tag tag="All" onClick={() => setSelectedTag(null)} />
+                            <Tag tag="All" onClick={() => setSelectedTag(null)} selected={selectedTag === null} />
                             {allBlogTags.map((tag, i) => (
-                                <Tag key={i} tag={tag} onClick={() => onTagClick(tag)}>{tag}</Tag>
+                                <Tag key={i} tag={tag} onClick={() => onTagClick(tag)} selected={selectedTag === tag} />
                             ))}
                         </div>
                     </motion.div>
@@ -101,7 +101,6 @@ export default function Blog({ posts }) {
                 <h1 className="item-start text-lg font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-3xl md:leading-14">
                     All Posts <span className="ml-2 text-sm">({filteredPosts.length})</span>
                 </h1>
-
                 {filteredPosts.map((post, idx) => (
                     <motion.div key={post.slug}>
                         <motion.div
@@ -109,8 +108,7 @@ export default function Blog({ posts }) {
                             initial="initial"
                             whileInView="animate"
                             exit="exit"
-                            viewport={{ amount: 0.8, once: true }}
-                        >
+                            viewport={{ amount: 0.9, once: true }}>
                             <BlogCard key={idx} {...post} />
                         </motion.div>
                     </motion.div>
