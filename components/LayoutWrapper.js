@@ -13,8 +13,15 @@ const LayoutWrapper = ({ children, toggle }) => {
 
     const handleLinkClick = (id) => {
         setSelectedLinkId(id);
+        localStorage.setItem('selectedLinkId', id);
     };
 
+    useEffect(() => {
+        const storedLinkId = localStorage.getItem('selectedLinkId');
+        if (storedLinkId) {
+            setSelectedLinkId(storedLinkId);
+        }
+    }, []);
 
     // const [isDarkMode, setIsDarkMode] = useState(false);
 

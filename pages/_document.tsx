@@ -38,6 +38,7 @@ class MyDocument extends Document {
                 <Head>
                     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
                     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
+
                 </Head>
                 {/* <body className="bg-white text-black antialiased dark:bg-gray-900 dark:text-white"> */}
                 <Main />
