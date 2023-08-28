@@ -13,7 +13,7 @@ import { popUp, FadeContainer, staggerHalf, fadeInUp, fadeIn } from '../../lib/a
 import { allNotes } from 'contentlayer/generated'
 
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const posts = getSortedPostsData()
     return {
         props: {
