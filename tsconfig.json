@@ -34,7 +34,11 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".contentlayer/generated",
-    "components/MovingCard.js"
+    "components/MovingCard.js",
+    "pages/_document.js",
+    "pages/scrivings/[slug].Js",
+    "pages/scrivings/index.js",
+    "pages/_app.js"
   ],
   "exclude": [
     "node_modules"
