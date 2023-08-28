@@ -5,5 +5,6 @@ import blog__reactUrlUseLocationUseParamsMdx from './blog__React-URL의-파라�
 import blog__reduxThunkReduxSagaMdx from './blog__Redux-thunk와 Redux-saga-이해하기.mdx.json' assert { type: 'json' }
 import blog__reduxMdx from './blog__Redux의-원리와-불변성.mdx.json' assert { type: 'json' }
 import blog__Mdx from './blog__브라우저가-그려지는-원리-및-가상돔.mdx.json' assert { type: 'json' }
+import blog__javaScriptExecutionContextMdx from './blog__JavaScript-ExecutionContext.mdx.json' assert { type: 'json' }
 
-export const allBlogs = [blog__nextjsReduxMdx, blog__reactUrlUseLocationUseParamsMdx, blog__reduxThunkReduxSagaMdx, blog__reduxMdx, blog__Mdx]
+export const allBlogs = [blog__nextjsReduxMdx, blog__reactUrlUseLocationUseParamsMdx, blog__reduxThunkReduxSagaMdx, blog__reduxMdx, blog__Mdx, blog__javaScriptExecutionContextMdx]
