@@ -1,19 +1,13 @@
-import { allBlogs, allNotes } from 'contentlayer/generated'
-import { useMDXComponent } from 'next-contentlayer/hooks'
 import Title from '../../components/Title';
 import { allScrivTags, allNotesPosts } from '../../constants/dataset'
 import Tag from '../../components/Tag';
 import { AnimatePresence, motion } from 'framer-motion'
 import { FadeContainer } from '../../lib/animtaion'
 import { useState } from 'react';
-import Divider from 'components/divider'
 import Link from 'next/link';
 
 
-export default function Note({ Notes }) {
-    // console.log('allNotes', allNotes)
-    // console.log('allSeriesName', allSeriesName)
-    // console.log('allNotes', allNotes)
+export default function Note() {
     const [selectedTag, setSelectedTag] = useState(null);
 
     const onTagClick = (tag) => {
@@ -33,9 +27,6 @@ export default function Note({ Notes }) {
         ? allNotesPosts.filter((note) => note.tags.includes(String(selectedTag)))
         : allNotesPosts;
 
-
-
-    console.log('filteredNotes', filteredNotes)
 
     return (
         <>
