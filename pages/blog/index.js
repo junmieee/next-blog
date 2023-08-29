@@ -99,7 +99,8 @@ export default function Blog({ posts }) {
 
                 </div>
                 <h1 className="item-start text-lg font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-3xl md:leading-14">
-                    All Posts <span className="ml-2 text-sm">({filteredPosts.length})</span>
+                    All Posts
+                    {/* <span className="ml-2 text-sm">({filteredPosts.length})</span> */}
                 </h1>
                 {filteredPosts.map((post, idx) => (
                     <motion.div key={post.slug}>
