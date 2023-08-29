@@ -22,10 +22,11 @@ export async function getStaticProps() {
     }
 }
 
-
 export default function Blog({ posts }) {
+
     const [searchValue, setSearchValue] = useState('')
     const [selectedTag, setSelectedTag] = useState(null);
+
 
     const filteredSearchPosts = posts.filter((p) => {
         const searchContent = p.title
