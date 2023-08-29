@@ -63,8 +63,9 @@ const LayoutWrapper = ({ children, toggle }) => {
                             <Image
                                 width={50}
                                 height={50}
-                                objectFit="cover"
 
+                                objectfit="cover"
+                                alt='home'
                                 className="rounded-full"
                                 src='/images/Home/tokyo.jpeg' />
                         </div>
@@ -89,7 +90,7 @@ const LayoutWrapper = ({ children, toggle }) => {
                                 <BsCloudMoonFill
                                     size={30}
                                     color='#ffc048'
-                                    objectFit={'contain'}
+                                    objectfit={'contain'}
                                     className="cursor-pointer"
                                     alt="밝은 모드로 변경"
                                 />
@@ -98,7 +99,7 @@ const LayoutWrapper = ({ children, toggle }) => {
                                 <BsFillSunFill
                                     size={30}
                                     color='#ffc048'
-                                    objectFit={'contain'}
+                                    objectfit={'contain'}
                                     className="cursor-pointer"
                                     alt="어두운 모드로 변경"
                                 />

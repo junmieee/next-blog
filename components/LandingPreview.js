@@ -18,7 +18,7 @@ export default function LandingPreview({ posts }) {
                     <Image
                         width={1000}
                         height={350}
-                        objectFit="cover"
+                        objectfit="cover"
 
                         className="object-cover w-full h-[350px] rounded-2xl  bg-no-repeat bg-cover"
                         src={'/images/Home/Banner2.jpeg'} />
