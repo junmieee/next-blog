@@ -36,7 +36,7 @@
     ".contentlayer/generated",
     "components/MovingCard.js",
     "pages/_document.js",
-    "pages/scrivings/[slug].Js",
+    "pages/scrivings/[slug].js",
     "pages/scrivings/index.js",
     "pages/_app.js"
   ],
