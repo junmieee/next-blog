@@ -56,11 +56,11 @@ export const Note = defineDocumentType(() => ({
     computedFields: {
         url_path: {
             type: 'string',
-            resolve: post => post._raw.flattenedPath.replace(/pages\/?/, ''),
+            resolve: note => note._raw.flattenedPath.replace(/pages\/?/, ''),
         },
         slug: {
             type: 'string',
-            resolve: post => post._raw.sourceFileName.replace(/\.mdx$/, ''),
+            resolve: note => note._raw.sourceFileName.replace(/\.mdx$/, ''),
         },
         pathSegments: {
             type: 'json',

@@ -7,7 +7,16 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 
-export default function Note() {
+// export async function getStaticProps() {
+//     const notes = allNotesPosts()
+//     return {
+//         props: {
+//             notes
+//         }
+//     }
+// }
+
+export default function Note({ }) {
     const [selectedTag, setSelectedTag] = useState(null);
 
     const onTagClick = (tag) => {
@@ -55,17 +64,17 @@ export default function Note() {
                     return (
                         <>
                             <Link href={'/scrivings/' + note.slug} key={idx} >
-                                <motion.div
+                                <div
                                     className=" hover:drop-shadow-basic dark:bg-darkPrimary rounded-2xl flex transform justify-center gap-4 rounded-sm border border-6 border-gray-300 p-4 dark:border-neutral-700 hover:dark:bg-darkSecondary "
                                 >
-                                    <AnimatePresence mode="wait">
-                                        <div className=" transition group-hover:scale-110 sm:group-hover:scale-100 dark:text-gray-100  text-gray-600  ">
-                                            <span className="ml-2 text-sm text-xl font-bold">{note.title}</span>
-                                        </div>
-                                        <p className=" select-none text-sm font-semibold sm:inline-flex md:text-base">
-                                        </p>
-                                    </AnimatePresence>
-                                </motion.div>
+                                    {/* <AnimatePresence mode="wait"> */}
+                                    <div className=" transition group-hover:scale-110 sm:group-hover:scale-100 dark:text-gray-100  text-gray-600  ">
+                                        <span className="ml-2 text-sm text-xl font-bold">{note.title}</span>
+                                    </div>
+                                    <p className=" select-none text-sm font-semibold sm:inline-flex md:text-base">
+                                    </p>
+                                    {/* </AnimatePresence> */}
+                                </div>
                             </Link>
                         </>
                     )
