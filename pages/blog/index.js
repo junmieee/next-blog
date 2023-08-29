@@ -13,7 +13,7 @@ import { popUp, FadeContainer, staggerHalf, fadeInUp, fadeIn } from '../../lib/a
 import { allNotes } from 'contentlayer/generated'
 
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const posts = getSortedPostsData()
     return {
         props: {
@@ -24,7 +24,6 @@ export async function getServerSideProps() {
 
 
 export default function Blog({ posts }) {
-    console.log('posts', posts)
     const [searchValue, setSearchValue] = useState('')
     const [selectedTag, setSelectedTag] = useState(null);
 
