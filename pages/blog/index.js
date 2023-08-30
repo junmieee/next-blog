@@ -2,19 +2,26 @@
 
 import Head from 'next/head'
 import BlogCard from '../../components/BlogCard'
-import { useState } from 'react'
-import { getSortedPostsData } from '../../lib/posts'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
-import { allBlogTags } from '../../constants/dataset'
+import { allBlogTags, allBlogPosts } from '../../constants/dataset'
 import Tag from '../../components/Tag';
 import Divider from '../../components/divider';
 import Title from '../../components/Title';
 import { popUp, FadeContainer, staggerHalf, fadeInUp, fadeIn } from '../../lib/animtaion'
-import { allNotes } from 'contentlayer/generated'
 
+
+// export async function getStaticProps() {
+//     const posts = getSortedPostsData()
+//     return {
+//         props: {
+//             posts
+//         }
+//     }
+// }
 
 export async function getStaticProps() {
-    const posts = getSortedPostsData()
+    const posts = allBlogPosts
     return {
         props: {
             posts
@@ -26,9 +33,15 @@ export default function Blog({ posts }) {
 
     const [searchValue, setSearchValue] = useState('')
     const [selectedTag, setSelectedTag] = useState(null);
+    const [sortedPosts, setSortedPosts] = useState([]);
+
+    useEffect(() => {
+        const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
+        setSortedPosts(sorted);
+    }, [posts]);
 
 
-    const filteredSearchPosts = posts.filter((p) => {
+    const filteredSearchPosts = sortedPosts.filter((p) => {
         const searchContent = p.title
         return searchContent.toLowerCase().includes(searchValue.toLowerCase())
     });

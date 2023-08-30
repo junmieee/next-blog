@@ -6,7 +6,6 @@ import { allBlogs } from 'contentlayer/generated'
 import LatestComponent from "./LatestComponent"
 import { TypeAnimation } from 'react-type-animation';
 import Link from "next/link"
-import { allSeriesName, allBlogPosts, allTags, reducePost } from '../constants/dataset'
 
 
 export default function LandingPreview({ posts }) {

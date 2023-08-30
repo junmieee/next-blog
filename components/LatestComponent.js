@@ -10,7 +10,7 @@ export default function LatestComponent({ posts }) {
     return (
         <div>
             {posts.slice(0, 5).map(({ title, date, description, slug }) => {
-                const formattedDate = dayjs(date).format("YYYY-MM-DD")
+                // const formattedDate = dayjs(date).format("YYYY-MM-DD")
                 return (
                     <Link
                         key={slug}
