@@ -4,6 +4,7 @@ import Head from "next/head";
 import LandingPreview from "../components/LandingPreview";
 import { allBlogs } from 'contentlayer/generated'
 import { getSortedPostsData } from "../lib/posts";
+import { allBlogPosts } from "../constants/dataset";
 // export const getStaticProps = async () => {
 //   const posts = allBlogs.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
 //   return {
@@ -14,8 +15,17 @@ import { getSortedPostsData } from "../lib/posts";
 // }
 
 
+// export async function getStaticProps() {
+//   const posts = getSortedPostsData()
+//   return {
+//     props: {
+//       posts
+//     }
+//   }
+// }
+
 export async function getStaticProps() {
-  const posts = getSortedPostsData()
+  const posts = allBlogPosts
   return {
     props: {
       posts
