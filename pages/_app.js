@@ -11,6 +11,8 @@ import LayoutWrapper from '../components/LayoutWrapper'
 import { ThemeProvider } from "next-themes"
 import { useRouter } from "next/router"
 import { useEffect, useState } from 'react'
+import { Suspense } from 'react'
+
 
 export default function App({ Component, pageProps }) {
 
@@ -42,8 +44,12 @@ export default function App({ Component, pageProps }) {
 
 
     return (
-        <LayoutWrapper toggle={themeModeHandle}>
-            <Component {...pageProps} darkMode={isDarkMode} />
-        </LayoutWrapper>
+        <Suspense fallback={<p>Loading weather...</p>}>
+
+            <LayoutWrapper toggle={themeModeHandle}>
+                <Component {...pageProps} darkMode={isDarkMode} />
+            </LayoutWrapper>
+        </Suspense>
+
     )
 }
