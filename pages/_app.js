@@ -44,8 +44,7 @@ export default function App({ Component, pageProps }) {
 
 
     return (
-        <Suspense fallback={<p>Loading weather...</p>}>
-
+        <Suspense>
             <LayoutWrapper toggle={themeModeHandle}>
                 <Component {...pageProps} darkMode={isDarkMode} />
             </LayoutWrapper>
