@@ -17,20 +17,32 @@ export const allSeriesName = allBlogs
 //     ...note,
 // })).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
+// export const allBlogPosts = allBlogs
+//     // .filter(isBlogPost)
+//     .map((post) => ({
+//         ...post,
+//         dateValue: new Date(post.date).getTime()
+//     }))
+//     .sort((a, b) => b.dateValue - a.dateValue);
+
+
+// export const allNotesPosts = allNotes.map((note) => ({
+//     ...note,
+//     dateValue: new Date(note.date).getTime()
+// })).sort((a, b) => b.dateValue - a.dateValue);
+
+
 export const allBlogPosts = allBlogs
-    // .filter(isBlogPost)
     .map((post) => ({
         ...post,
-        // dateValue: new Date(post.date).getTime()
+        // dateValue를 연산하지 않고 그대로 유지하도록 변경
     }))
-// .sort((a, b) => b.dateValue - a.dateValue);
-
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 export const allNotesPosts = allNotes.map((note) => ({
     ...note,
-    // dateValue: new Date(note.date).getTime()
-    // })).sort((a, b) => b.dateValue - a.dateValue);
-}));
+    // dateValue를 연산하지 않고 그대로 유지하도록 변경
+})).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 
 export const allBlogTags = Array.from(
