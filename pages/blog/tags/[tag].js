@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import PostListItem from '../../../components/PostListItem';
 import Divider from '../../../components/divider';
 import { fadeIn, fadeInUp } from '../../../lib/animtaion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 
