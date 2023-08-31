@@ -64,12 +64,12 @@ export default function Note({ notes }) {
             {/* <h1 className="item-start text-lg font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-3xl md:leading-14">
                 <span className="ml-2 text-sm">{filteredNotes.length}개의 Scrivings</span>
             </h1> */}
-            <div className="mt-6 flex flex-wrap gap-2 py-4">
+            {/* <div className="mt-6 flex flex-wrap gap-2 py-4">
                 <Tag tag="All" onClick={onAllTagClick} selected={selectedTag === null} />
                 {allScrivTags.map((tag, i) => (
                     <Tag key={i} tag={tag} onClick={() => onTagClick(tag)} selected={selectedTag === tag} />
                 ))}
-            </div>
+            </div> */}
             {/* <Divider /> */}
             <motion.div
                 initial="hidden"
