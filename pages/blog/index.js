@@ -41,7 +41,6 @@ export const getStaticProps = async () => {
 }
 
 export default function Blog({ posts }) {
-
     const [searchValue, setSearchValue] = useState('')
     const [selectedTag, setSelectedTag] = useState(null);
     const [sortedPosts, setSortedPosts] = useState([]);
@@ -51,6 +50,8 @@ export default function Blog({ posts }) {
         const sorted = posts.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
         setSortedPosts(sorted);
     }, [posts]);
+
+
 
 
     const filteredSearchPosts = sortedPosts.filter((p) => {
@@ -75,7 +76,6 @@ export default function Blog({ posts }) {
         }
     });
 
-    // console.log('allNotes', allNotes)
 
     return (
         <>
@@ -125,7 +125,7 @@ export default function Blog({ posts }) {
                 </div>
                 <h1 className="item-start text-lg font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-3xl md:leading-14">
                     All Posts
-                    {/* <span className="ml-2 text-sm">({filteredPosts.length})</span> */}
+                    <span className="ml-2 text-sm">({filteredPosts.length})</span>
                 </h1>
                 {filteredPosts.map((post, idx) => (
                     <motion.div key={post.slug}>
