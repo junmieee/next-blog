@@ -4,7 +4,7 @@ import Head from 'next/head'
 import BlogCard from '../../components/BlogCard'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
-import { allBlogTags, allBlogPosts } from '../../constants/dataset'
+// import { allBlogTags, allBlogPosts } from '../../constants/dataset'
 import Tag from '../../components/Tag';
 import Divider from '../../components/divider';
 import Title from '../../components/Title';
@@ -48,12 +48,12 @@ export default function Blog({ posts }) {
 
     useEffect(() => {
         // const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
-        const sorted = allBlogs.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
+        const sorted = posts.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
         setSortedPosts(sorted);
     }, [posts]);
 
 
-    const filteredSearchPosts = posts.filter((p) => {
+    const filteredSearchPosts = sortedPosts.filter((p) => {
         const searchContent = p.title
         return searchContent.toLowerCase().includes(searchValue.toLowerCase())
     });
@@ -113,12 +113,12 @@ export default function Blog({ posts }) {
                         {/* <div className='mb-4 mt-8 text-3xl font-extrabold tracking-tight sm:text-5xl text-gray-900 dark:text-gray-100'>
                             Tags<span className="ml-2 text-sm">({allTags.length})</span>
                         </div> */}
-                        <div className="mt-4 flex flex-wrap gap-2">
+                        {/* <div className="mt-4 flex flex-wrap gap-2">
                             <Tag tag="All" onClick={() => setSelectedTag(null)} selected={selectedTag === null} />
                             {allBlogTags.map((tag, i) => (
                                 <Tag key={i} tag={tag} onClick={() => onTagClick(tag)} selected={selectedTag === tag} />
                             ))}
-                        </div>
+                        </div> */}
                     </motion.div>
                     <Divider />
 

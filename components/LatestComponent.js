@@ -33,7 +33,7 @@ export default function LatestComponent({ posts }) {
                                             </div>
                                         </div>
                                         <div className="flex right-0 leading-6">
-                                            <IconWithText Icon={AiOutlineCalendar} size={14} text={formattedDate} />
+                                            {/* <IconWithText Icon={AiOutlineCalendar} size={14} text={formattedDate} /> */}
                                         </div>
                                     </div>
                                 </div>
