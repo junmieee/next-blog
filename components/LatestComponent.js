@@ -10,7 +10,7 @@ export default function LatestComponent({ posts }) {
     return (
         <div>
             {posts.slice(0, 5).map(({ title, date, description, slug }) => {
-                // const formattedDate = dayjs(date).format("YYYY-MM-DD")
+                const formattedDate = dayjs(date).format("YYYY-MM-DD")
                 return (
                     <Link
                         key={slug}
@@ -33,7 +33,7 @@ export default function LatestComponent({ posts }) {
                                             </div>
                                         </div>
                                         <div className="flex right-0 leading-6">
-                                            {/* <IconWithText Icon={AiOutlineCalendar} size={14} text={formattedDate} /> */}
+                                            <IconWithText Icon={AiOutlineCalendar} size={14} text={formattedDate} />
                                         </div>
                                     </div>
                                 </div>

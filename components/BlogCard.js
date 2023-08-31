@@ -2,13 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { AiOutlineCalendar } from "react-icons/ai";
 import IconWithText from "./IconWithText";
-// import dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import { motion } from "framer-motion";
 import { FadeContainer, popUp, popUpY } from "lib/animtaion";
 
 
 const BlogCard = (post) => {
-    // const formattedDate = dayjs(post.date).format("YYYY-MM-DD")
+    const formattedDate = dayjs(post.date).format("YYYY-MM-DD")
 
     return (
         <ul role="list">
@@ -27,7 +27,7 @@ const BlogCard = (post) => {
                                 {post.description}
                             </p>
 
-                            {/* <IconWithText Icon={AiOutlineCalendar} size={14} text={formattedDate} /> */}
+                            <IconWithText Icon={AiOutlineCalendar} size={14} text={formattedDate} />
 
 
                         </div>
