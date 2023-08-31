@@ -34,19 +34,19 @@ import { allBlogTags } from '../../constants/dataset';
 
 export const getStaticProps = async () => {
     const posts = allBlogs
-    const tags = allBlogTags
+    // const tags = allBlogTags
     return {
         props: {
-            posts, tags
+            posts
         },
     }
 }
 
-export default function Blog({ posts, tags }) {
+export default function Blog({ posts }) {
     const [searchValue, setSearchValue] = useState('')
     const [selectedTag, setSelectedTag] = useState(null);
     const [sortedPosts, setSortedPosts] = useState([]);
-    const [allTags, settags] = useState([]);
+    // const [allTags, settags] = useState([]);
 
     useEffect(() => {
         // const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
@@ -55,10 +55,9 @@ export default function Blog({ posts, tags }) {
     }, [posts]);
 
 
-    useEffect(() => {
-        // const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
-        settags(tags);
-    }, [tags]);
+    // useEffect(() => {
+    //     settags(tags);
+    // }, [tags]);
 
 
     const filteredSearchPosts = sortedPosts.filter((p) => {
@@ -122,7 +121,7 @@ export default function Blog({ posts, tags }) {
                         </div> */}
                         <div className="mt-4 flex flex-wrap gap-2">
                             <Tag tag="All" onClick={() => setSelectedTag(null)} selected={selectedTag === null} />
-                            {allTags.map((tag, i) => (
+                            {allBlogTags.map((tag, i) => (
                                 <Tag key={i} tag={tag} onClick={() => onTagClick(tag)} selected={selectedTag === tag} />
                             ))}
                         </div>
