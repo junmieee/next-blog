@@ -10,6 +10,7 @@ import Divider from '../../components/divider';
 import Title from '../../components/Title';
 import { popUp, FadeContainer, staggerHalf, fadeInUp, fadeIn } from '../../lib/animtaion'
 import { allBlogs } from 'contentlayer/generated'
+import { allBlogTags } from '../../constants/dataset';
 
 
 // export async function getStaticProps() {
@@ -33,17 +34,19 @@ import { allBlogs } from 'contentlayer/generated'
 
 export const getStaticProps = async () => {
     const posts = allBlogs
+    const tags = allBlogTags
     return {
         props: {
-            posts,
+            posts, tags
         },
     }
 }
 
-export default function Blog({ posts }) {
+export default function Blog({ posts, tags }) {
     const [searchValue, setSearchValue] = useState('')
     const [selectedTag, setSelectedTag] = useState(null);
     const [sortedPosts, setSortedPosts] = useState([]);
+    const [allTags, settags] = useState([]);
 
     useEffect(() => {
         // const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
@@ -52,6 +55,10 @@ export default function Blog({ posts }) {
     }, [posts]);
 
 
+    useEffect(() => {
+        // const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
+        settags(tags);
+    }, [tags]);
 
 
     const filteredSearchPosts = sortedPosts.filter((p) => {
@@ -113,12 +120,12 @@ export default function Blog({ posts }) {
                         {/* <div className='mb-4 mt-8 text-3xl font-extrabold tracking-tight sm:text-5xl text-gray-900 dark:text-gray-100'>
                             Tags<span className="ml-2 text-sm">({allTags.length})</span>
                         </div> */}
-                        {/* <div className="mt-4 flex flex-wrap gap-2">
+                        <div className="mt-4 flex flex-wrap gap-2">
                             <Tag tag="All" onClick={() => setSelectedTag(null)} selected={selectedTag === null} />
-                            {allBlogTags.map((tag, i) => (
+                            {allTags.map((tag, i) => (
                                 <Tag key={i} tag={tag} onClick={() => onTagClick(tag)} selected={selectedTag === tag} />
                             ))}
-                        </div> */}
+                        </div>
                     </motion.div>
                     <Divider />
 
