@@ -3,7 +3,7 @@
 import Head from "next/head";
 import LandingPreview from "../components/LandingPreview";
 // import { allBlogPosts } from "../constants/dataset";
-import { Suspense } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { allBlogs } from 'contentlayer/generated'
 
 // export const getStaticProps = async () => {
@@ -46,6 +46,13 @@ export const getStaticProps = async () => {
 // }
 
 export default function Home({ posts }) {
+  const [sortedPosts, setSortedPosts] = useState([]);
+
+  useEffect(() => {
+    // const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
+    const sorted = posts.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
+    setSortedPosts(sorted);
+  }, [posts]);
   return (
     <div>
       <Suspense>
@@ -55,7 +62,7 @@ export default function Home({ posts }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <LandingPreview posts={posts} />
+        <LandingPreview posts={sortedPosts} />
       </Suspense>
     </div>
   );
