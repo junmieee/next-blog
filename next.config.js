@@ -22,7 +22,6 @@ const nextConfig = {
     // Optionally, add any other Next.js config below
     // reactStrictMode: true,
     reactStrictMode: true,
-    swcMinify: true
 
 
 }

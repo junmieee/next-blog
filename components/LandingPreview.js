@@ -18,7 +18,7 @@ export default function LandingPreview({ posts }) {
                         width={1000}
                         height={350}
                         objectfit="cover"
-
+                        alt="banner"
                         className="object-cover w-full h-[350px] rounded-2xl  bg-no-repeat bg-cover"
                         src={'/images/Home/Banner2.jpeg'} />
                     <div className="flex pl-14 flex-col hover:bg-gray-900/50 absolute opacity-0 hover:opacity-100 w-full h-full rounded-2xl transition ease-in-out duration-300 ">
