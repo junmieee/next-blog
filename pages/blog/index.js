@@ -113,12 +113,12 @@ export default function Blog({ posts }) {
                         {/* <div className='mb-4 mt-8 text-3xl font-extrabold tracking-tight sm:text-5xl text-gray-900 dark:text-gray-100'>
                             Tags<span className="ml-2 text-sm">({allTags.length})</span>
                         </div> */}
-                        {/* <div className="mt-4 flex flex-wrap gap-2">
+                        <div className="mt-4 flex flex-wrap gap-2">
                             <Tag tag="All" onClick={() => setSelectedTag(null)} selected={selectedTag === null} />
                             {allBlogTags.map((tag, i) => (
                                 <Tag key={i} tag={tag} onClick={() => onTagClick(tag)} selected={selectedTag === tag} />
                             ))}
-                        </div> */}
+                        </div>
                     </motion.div>
                     <Divider />
 
