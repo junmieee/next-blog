@@ -44,16 +44,29 @@ export const allNotesPosts = allNotes.map((note) => ({
 // })).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 
+// export const allBlogTags = Array.from(
+//     allBlogPosts.reduce((ac, v) => {
+//         v.tags.forEach((tag) => ac.add(tag));
+//         return ac;
+//     }, new Set())
+// )
+
 export const allBlogTags = Array.from(
-    allBlogPosts.reduce((ac, v) => {
+    allBlogs.reduce((ac, v) => {
         v.tags.forEach((tag) => ac.add(tag));
         return ac;
     }, new Set())
 )
 
+// export const allScrivTags = Array.from(
+//     allNotesPosts.reduce((ac, v) => {
+//         v.tags.forEach((tag) => ac.add(tag));
+//         return ac;
+//     }, new Set())
+// )
 
 export const allScrivTags = Array.from(
-    allNotesPosts.reduce((ac, v) => {
+    allNotes.reduce((ac, v) => {
         v.tags.forEach((tag) => ac.add(tag));
         return ac;
     }, new Set())

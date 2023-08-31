@@ -1,10 +1,11 @@
 import Title from '../../components/Title';
-import { allScrivTags, allNotesPosts } from '../../constants/dataset'
+import { allNotesPosts } from '../../constants/dataset'
 import Tag from '../../components/Tag';
 import { AnimatePresence, motion } from 'framer-motion'
 import { FadeContainer } from '../../lib/animtaion'
 import { useState } from 'react';
 import Link from 'next/link';
+import { allNotes } from 'contentlayer/generated';
 
 
 // export async function getStaticProps() {
@@ -16,8 +17,26 @@ import Link from 'next/link';
 //     }
 // }
 
-export default function Note({ }) {
+
+
+export const getStaticProps = async () => {
+    const notes = allNotes
+    return {
+        props: {
+            notes,
+        },
+    }
+}
+
+export default function Note({ notes }) {
     const [selectedTag, setSelectedTag] = useState(null);
+
+    // useEffect(() => {
+    //     // const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
+    //     const sorted = allBlogs.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
+    //     setSortedPosts(sorted);
+    // }, [posts]);
+
 
     const onTagClick = (tag) => {
         if (selectedTag === tag) {
@@ -33,8 +52,8 @@ export default function Note({ }) {
     };
 
     const filteredNotes = selectedTag
-        ? allNotesPosts.filter((note) => note.tags.includes(String(selectedTag)))
-        : allNotesPosts;
+        ? notes.filter((note) => note.tags.includes(String(selectedTag)))
+        : notes;
 
 
     return (
