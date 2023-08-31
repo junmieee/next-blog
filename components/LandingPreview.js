@@ -1,8 +1,5 @@
 import Head from "next/head"
 import Image from "next/image"
-import styled from "styled-components"
-import BlogCard from "./BlogCard"
-import { allBlogs } from 'contentlayer/generated'
 import LatestComponent from "./LatestComponent"
 import { TypeAnimation } from 'react-type-animation';
 import Link from "next/link"
@@ -22,7 +19,7 @@ export default function LandingPreview({ posts }) {
                         className="object-cover w-full h-[350px] rounded-2xl  bg-no-repeat bg-cover"
                         src={'/images/Home/Banner2.jpeg'} />
                     <div className="flex pl-14 flex-col hover:bg-gray-900/50 absolute opacity-0 hover:opacity-100 w-full h-full rounded-2xl transition ease-in-out duration-300 ">
-                        <span className="text-6xl  font-bold md:text-3xl pt-14 text-slate-50	">
+                        <span className="text-6xl  font-bold md:text-3xl pt-14 text-slate-50">
                             Chloe Shin 🦊
                         </span>
                         {/* <span className="text-lg  text-slate-200	  font-light md:text-base mt-2.5 break-all">
@@ -46,9 +43,7 @@ export default function LandingPreview({ posts }) {
                             />
                         </div>
                         <Link href={'/about'}
-                            className="mt-4
-                          
-                            ">
+                            className="mt-4">
                             <span className="text-base text-slate-50 ">
                                 Learn more
                             </span>

@@ -1,7 +1,6 @@
 import { title } from "process";
 import Link from "next/link";
 import IconWithText from "./IconWithText";
-// import dayjs from 'dayjs';
 import { AiOutlineCalendar } from "react-icons/ai";
 import Divider from "./divider";
 
@@ -9,8 +8,7 @@ export default function LatestComponent({ posts }) {
 
     return (
         <div>
-            {posts.slice(0, 5).map(({ title, date, description, slug }) => {
-                // const formattedDate = dayjs(date).format("YYYY-MM-DD")
+            {posts.slice(0, 5).map(({ title, description, slug }) => {
                 return (
                     <Link
                         key={slug}
@@ -33,7 +31,6 @@ export default function LatestComponent({ posts }) {
                                             </div>
                                         </div>
                                         <div className="flex right-0 leading-6">
-                                            {/* <IconWithText Icon={AiOutlineCalendar} size={14} text={formattedDate} /> */}
                                         </div>
                                     </div>
                                 </div>
