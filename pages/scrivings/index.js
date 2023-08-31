@@ -30,12 +30,14 @@ export const getStaticProps = async () => {
 
 export default function Note({ notes }) {
     const [selectedTag, setSelectedTag] = useState(null);
+    const [sortedPosts, setSortedPosts] = useState([]);
 
-    // useEffect(() => {
-    //     // const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
-    //     const sorted = allBlogs.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
-    //     setSortedPosts(sorted);
-    // }, [posts]);
+    useEffect(() => {
+        // const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
+        const sorted = notes.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
+        setSortedPosts(sorted);
+    }, [posts]);
+
 
 
     const onTagClick = (tag) => {
@@ -52,8 +54,8 @@ export default function Note({ notes }) {
     };
 
     const filteredNotes = selectedTag
-        ? notes.filter((note) => note.tags.includes(String(selectedTag)))
-        : notes;
+        ? sortedPosts.filter((note) => note.tags.includes(String(selectedTag)))
+        : sortedPosts;
 
 
     return (

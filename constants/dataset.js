@@ -5,17 +5,17 @@ export const allSeriesName = allBlogs
     .map((post) => post.slug.split('/')[0]);
 
 
-export const allBlogPosts = allBlogs
-    // .filter(isBlogPost)
-    .map((post) => ({
-        ...post,
-    }))
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+// export const allBlogPosts = allBlogs
+//     // .filter(isBlogPost)
+//     .map((post) => ({
+//         ...post,
+//     }))
+//     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 
-export const allNotesPosts = allNotes.map((note) => ({
-    ...note,
-})).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+// export const allNotesPosts = allNotes.map((note) => ({
+//     ...note,
+// })).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 // export const allBlogPosts = allBlogs
 //     // .filter(isBlogPost)
