@@ -13,8 +13,6 @@
     "babel-plugin-styled": "^0.0.0",
     "babel-plugin-styled-components": "^2.1.4",
     "contentlayer": "^0.3.0",
-    "date-fns": "^2.29.3",
-    "dayjs": "^1.11.9",
     "framer-motion": "^10.15.0",
     "gray-matter": "^4.0.3",
     "next": "latest",
