@@ -1,5 +1,5 @@
 import Title from '../../components/Title';
-import { allNotesPosts } from '../../constants/dataset'
+// import { allNotesPosts } from '../../constants/dataset'
 import Tag from '../../components/Tag';
 import { AnimatePresence, motion } from 'framer-motion'
 import { FadeContainer } from '../../lib/animtaion'
@@ -30,12 +30,12 @@ export const getStaticProps = async () => {
 
 export default function Note({ notes }) {
     const [selectedTag, setSelectedTag] = useState(null);
-    const [sortedPosts, setSortedPosts] = useState([]);
+    const [sortedNotes, setSortedNotes] = useState([]);
 
     useEffect(() => {
         // const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
         const sorted = notes.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
-        setSortedPosts(sorted);
+        setSortedNotes(sorted);
     }, [notes]);
 
 
@@ -53,10 +53,17 @@ export default function Note({ notes }) {
         setSelectedTag(null);
     };
 
-    const filteredNotes = selectedTag
-        ? sortedPosts.filter((note) => note.tags.includes(String(selectedTag)))
-        : sortedPosts;
+    // const filteredNotes = selectedTag
+    //     ? sortedNotes.filter((note) => note.tags.includes(String(selectedTag)))
+    //     : sortedNotes;
 
+    const filteredNotes = sortedNotes.filter((note) => {
+        if (selectedTag === null) {
+            return true;
+        } else {
+            return note.tags.includes(selectedTag);
+        }
+    });
 
     return (
         <>
