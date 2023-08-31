@@ -9,6 +9,7 @@ import Tag from '../../components/Tag';
 import Divider from '../../components/divider';
 import Title from '../../components/Title';
 import { popUp, FadeContainer, staggerHalf, fadeInUp, fadeIn } from '../../lib/animtaion'
+import { allBlogs } from 'contentlayer/generated'
 
 
 // export async function getStaticProps() {
@@ -21,7 +22,7 @@ import { popUp, FadeContainer, staggerHalf, fadeInUp, fadeIn } from '../../lib/a
 // }
 
 export async function getStaticProps() {
-    const posts = allBlogPosts
+    const posts = allBlogs.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
     return {
         props: {
             posts
@@ -35,13 +36,13 @@ export default function Blog({ posts }) {
     const [selectedTag, setSelectedTag] = useState(null);
     const [sortedPosts, setSortedPosts] = useState([]);
 
-    useEffect(() => {
-        const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
-        setSortedPosts(sorted);
-    }, [posts]);
+    // useEffect(() => {
+    //     const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
+    //     setSortedPosts(sorted);
+    // }, [posts]);
 
 
-    const filteredSearchPosts = sortedPosts.filter((p) => {
+    const filteredSearchPosts = posts.filter((p) => {
         const searchContent = p.title
         return searchContent.toLowerCase().includes(searchValue.toLowerCase())
     });
