@@ -3,7 +3,7 @@ import { allNotesPosts } from '../../constants/dataset'
 import Tag from '../../components/Tag';
 import { AnimatePresence, motion } from 'framer-motion'
 import { FadeContainer } from '../../lib/animtaion'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { allNotes } from 'contentlayer/generated';
 
@@ -36,7 +36,7 @@ export default function Note({ notes }) {
         // const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
         const sorted = notes.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
         setSortedPosts(sorted);
-    }, [posts]);
+    }, [notes]);
 
 
 

@@ -32,16 +32,17 @@ export const allSeriesName = allBlogs
 // })).sort((a, b) => b.dateValue - a.dateValue);
 
 
-// export const allBlogPosts = allBlogs
-//     .map((post) => ({
-//         ...post,
-//     }))
-//     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+export const allBlogPosts = allBlogs
+    .map((post) => ({
+        ...post,
+    }))
+// .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 
-// export const allNotesPosts = allNotes.map((note) => ({
-//     ...note,
-// })).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+export const allNotesPosts = allNotes.map((note) => ({
+    ...note,
+}))
+// .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 
 // export const allBlogTags = Array.from(
@@ -52,7 +53,7 @@ export const allSeriesName = allBlogs
 // )
 
 export const allBlogTags = Array.from(
-    allBlogs.reduce((ac, v) => {
+    allBlogPosts.reduce((ac, v) => {
         v.tags.forEach((tag) => ac.add(tag));
         return ac;
     }, new Set())
@@ -66,7 +67,7 @@ export const allBlogTags = Array.from(
 // )
 
 export const allScrivTags = Array.from(
-    allNotes.reduce((ac, v) => {
+    allNotesPosts.reduce((ac, v) => {
         v.tags.forEach((tag) => ac.add(tag));
         return ac;
     }, new Set())
