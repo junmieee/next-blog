@@ -3,5 +3,7 @@
 import blog__nextjsReduxMdx from './blog__Nextjs에-Redux-적용하기.mdx.json' assert { type: 'json' }
 import blog__reduxMdx from './blog__Redux의-원리와-불변성.mdx.json' assert { type: 'json' }
 import blog__Mdx from './blog__브라우저가-그려지는-원리-및-가상돔.mdx.json' assert { type: 'json' }
+import blog__reduxThunkReduxSagaMdx from './blog__Redux-thunk와 Redux-saga-이해하기.mdx.json' assert { type: 'json' }
+import blog__reactUrlUseLocationUseParamsMdx from './blog__React-URL의-파라미터-값-추출-useLocation과-useParams.mdx.json' assert { type: 'json' }
 
-export const allBlogs = [blog__nextjsReduxMdx, blog__reduxMdx, blog__Mdx]
+export const allBlogs = [blog__nextjsReduxMdx, blog__reduxMdx, blog__Mdx, blog__reduxThunkReduxSagaMdx, blog__reactUrlUseLocationUseParamsMdx]

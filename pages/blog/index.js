@@ -11,7 +11,6 @@ import Title from '../../components/Title';
 import { popUp, FadeContainer, staggerHalf, fadeInUp, fadeIn } from '../../lib/animtaion'
 import { allBlogs } from 'contentlayer/generated'
 
-
 // export async function getStaticProps() {
 //     const posts = getSortedPostsData()
 //     return {
@@ -21,14 +20,14 @@ import { allBlogs } from 'contentlayer/generated'
 //     }
 // }
 
-export async function getStaticProps() {
-    const posts = allBlogs.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
-    return {
-        props: {
-            posts
-        }
-    }
-}
+// export async function getStaticProps() {
+//     const posts = allBlogPosts
+//     return {
+//         props: {
+//             posts
+//         }
+//     }
+// }
 
 export default function Blog({ posts }) {
 
@@ -36,13 +35,14 @@ export default function Blog({ posts }) {
     const [selectedTag, setSelectedTag] = useState(null);
     const [sortedPosts, setSortedPosts] = useState([]);
 
-    // useEffect(() => {
-    //     const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
-    //     setSortedPosts(sorted);
-    // }, [posts]);
+    useEffect(() => {
+        // const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
+        const sorted = allBlogs.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
+        setSortedPosts(sorted);
+    }, [posts]);
 
 
-    const filteredSearchPosts = posts.filter((p) => {
+    const filteredSearchPosts = sortedPosts.filter((p) => {
         const searchContent = p.title
         return searchContent.toLowerCase().includes(searchValue.toLowerCase())
     });
