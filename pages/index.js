@@ -2,8 +2,9 @@
 
 import Head from "next/head";
 import LandingPreview from "../components/LandingPreview";
-import { allBlogPosts } from "../constants/dataset";
+// import { allBlogPosts } from "../constants/dataset";
 import { Suspense } from 'react'
+import { allBlogs } from 'contentlayer/generated'
 
 // export const getStaticProps = async () => {
 //   const posts = allBlogs.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
@@ -25,14 +26,24 @@ import { Suspense } from 'react'
 // }
 
 
-export async function getStaticProps() {
-  const posts = allBlogPosts
+export const getStaticProps = async () => {
+  const posts = allBlogs
   return {
     props: {
-      posts
-    }
+      posts,
+    },
   }
 }
+
+
+// export async function getStaticProps() {
+//   const posts = allBlogPosts
+//   return {
+//     props: {
+//       posts
+//     }
+//   }
+// }
 
 export default function Home({ posts }) {
   return (
