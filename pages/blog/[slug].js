@@ -1,4 +1,4 @@
-import { allBlogs, allNotes } from 'contentlayer/generated'
+import { allBlogs } from 'contentlayer/generated'
 import { useEffect, useState } from 'react'
 import BlogLayout from '../../layouts/BlogLayout'
 
@@ -22,14 +22,14 @@ export const getStaticProps = async ({ params }) => {
 
 
 const PostPage = ({ post }) => {
-    const [sortedPosts, setSortedPosts] = useState(post);
+    // const [sortedPosts, setSortedPosts] = useState(post);
 
-    useEffect(() => {
-        setSortedPosts(post);
-    }, [post]);
+    // useEffect(() => {
+    //     setSortedPosts(post);
+    // }, [post]);
 
     console.log('포스트', post)
-    return <BlogLayout post={sortedPosts} />
+    return <BlogLayout post={post} />
 }
 
 export default PostPage
