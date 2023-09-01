@@ -86,7 +86,6 @@ export const getStaticProps = async ({ params }) => {
 
 
 const PostPage = ({ note }) => {
-    console.log('allNotes', allNotes)
     return <BlogLayout post={note} />
 }
 
