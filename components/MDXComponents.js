@@ -1,9 +1,5 @@
-import { allTags } from "../constants/dataset";
-import Tag from "./Tag";
-import { AiOutlineCalendar } from "react-icons/ai";
-import IconWithText from "./IconWithText";
 
-const MDXComponent = ({ post }) => {
+const MDXComponent = ({ children, post }) => {
     return (
         <div className="w-full flex flex-col prose dark:prose-invert mt-10 text-gray-900 dark:text-gray-100">
             <h1 className=" text-gray-900 dark:text-gray-100 mb-2">{post.title}</h1>
@@ -16,7 +12,7 @@ const MDXComponent = ({ post }) => {
                     </div>
                 ))}
             </div>
-            {/* {children} */}
+            {children}
         </div>
     );
 };
