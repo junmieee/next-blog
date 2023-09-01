@@ -44,7 +44,6 @@ import Giscus from "@giscus/react";
 
 
 export default function Comments() {
-    const { resolvedTheme } = useTheme();
     const theme = localStorage.getItem('theme');
 
     // const theme = resolvedTheme === 'dark' ? 'dark' : 'light';
