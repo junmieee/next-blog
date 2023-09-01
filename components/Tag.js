@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 export default function Tag({ tag, onClick, selected }) {
 
     const tagClass = `text-neutral-100 rounded-lg px-2 transition-colors py-0.5 ${selected

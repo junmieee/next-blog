@@ -1,6 +1,6 @@
 import MDXComponent from '../components/MDXComponents';
 import { useMDXComponent } from 'next-contentlayer/hooks'
-import Giscus from '../components/Comments';
+// import Giscus from '../components/Comments';
 
 
 function BlogLayout({ post }) {
@@ -13,7 +13,7 @@ function BlogLayout({ post }) {
             <MDXComponent post={post} title={post.title} >
                 <MDXBody />
             </MDXComponent>
-            <Giscus />
+            {/* <Giscus /> */}
 
         </>
 
