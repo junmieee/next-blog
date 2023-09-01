@@ -22,9 +22,9 @@ export const getStaticProps = async ({ params }) => {
 
 
 const PostPage = ({ post }) => {
-    const [sortedPosts, setSortedPosts] = useState(post);
 
     useEffect(() => {
+        const [sortedPosts, setSortedPosts] = useState(post);
         setSortedPosts(sortedPosts);
     }, [post]);
 
