@@ -13,25 +13,6 @@ import { allBlogs } from 'contentlayer/generated'
 import { allBlogTags } from '../../constants/dataset';
 
 
-// export async function getStaticProps() {
-//     const posts = allBlogPosts
-//     return {
-//         props: {
-//             posts
-//         }
-//     }
-// }
-
-
-// export const getStaticProps = async () => {
-//     const posts = allBlogs.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
-//     return {
-//         props: {
-//             posts,
-//         },
-//     }
-// }
-
 export const getStaticProps = async () => {
     const posts = allBlogs
     const tags = allBlogTags

@@ -7,7 +7,6 @@ import Image from 'next/image';
 import { BsFillSunFill, BsCloudMoonFill } from "react-icons/bs";
 import React, { useEffect, useState } from 'react';
 import About from '../pages/about'
-import { Suspense } from 'react'
 
 const LayoutWrapper = ({ children, toggle }) => {
     const [selectedLinkId, setSelectedLinkId] = useState(null);
@@ -56,7 +55,7 @@ const LayoutWrapper = ({ children, toggle }) => {
 
 
     return (
-        <Suspense>
+        <>
             <SectionContainer >
                 <div className="relative flex h-screen flex-col justify-between">
                     <header className="flex w-full px-5 xl:px-10 top-0 left-0 right-0 m-auto mx-auto max-w-5xl xl:max-w-5xl dark:bg-zinc-900 bg-white h-5 items-center fixed z-50 justify-between py-10">
@@ -113,7 +112,7 @@ const LayoutWrapper = ({ children, toggle }) => {
                     <Footer />
                 </div>
             </SectionContainer >
-        </Suspense>
+        </>
 
     )
 

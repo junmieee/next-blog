@@ -9,7 +9,6 @@ import 'prismjs/themes/prism-tomorrow.css'
 import 'katex/dist/katex.min.css'
 import LayoutWrapper from '../components/LayoutWrapper'
 import { ThemeProvider } from "next-themes"
-import { useRouter } from "next/router"
 import { useEffect, useState } from 'react'
 
 
