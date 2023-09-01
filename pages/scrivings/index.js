@@ -6,31 +6,24 @@ import { FadeContainer } from '../../lib/animtaion'
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { allNotes } from 'contentlayer/generated';
-
-
-// export async function getStaticProps() {
-//     const notes = allNotesPosts()
-//     return {
-//         props: {
-//             notes
-//         }
-//     }
-// }
+import { allScrivTags } from 'constants/dataset';
 
 
 
 export const getStaticProps = async () => {
     const notes = allNotes
+    const tags = allScrivTags
     return {
         props: {
-            notes,
+            notes, tags
         },
     }
 }
 
-export default function Note({ notes }) {
+export default function Note({ notes, tags }) {
     const [selectedTag, setSelectedTag] = useState(null);
     const [sortedNotes, setSortedNotes] = useState([]);
+    const [allTags, settags] = useState([]);
 
     useEffect(() => {
         // const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
@@ -38,6 +31,9 @@ export default function Note({ notes }) {
         setSortedNotes(sorted);
     }, [notes]);
 
+    useEffect(() => {
+        settags(tags);
+    }, [tags]);
 
 
     const onTagClick = (tag) => {
@@ -70,15 +66,12 @@ export default function Note({ notes }) {
             <div className='flex pt-6 items-end'>
                 <Title title="Scrivings" />
             </div>
-            {/* <h1 className="item-start text-lg font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-3xl md:leading-14">
-                <span className="ml-2 text-sm">{filteredNotes.length}개의 Scrivings</span>
-            </h1> */}
-            {/* <div className="mt-6 flex flex-wrap gap-2 py-4">
+            <div className="mt-6 flex flex-wrap gap-2 py-4">
                 <Tag tag="All" onClick={onAllTagClick} selected={selectedTag === null} />
-                {allScrivTags.map((tag, i) => (
+                {allTags.map((tag, i) => (
                     <Tag key={i} tag={tag} onClick={() => onTagClick(tag)} selected={selectedTag === tag} />
                 ))}
-            </div> */}
+            </div>
             <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -89,8 +82,8 @@ export default function Note({ notes }) {
                 {filteredNotes.map((note, idx) => {
                     return (
                         <>
-                            <Link href={'/scrivings/' + note.slug} key={idx} >
-                                <div className="rounded-2xl hover:drop-shadow-basic dark:bg-darkPrimary flex transform justify-center gap-4 rounded-sm border border-6 border-gray-300 p-4 dark:border-neutral-700 hover:dark:bg-darkSecondary "
+                            <Link href={'/scrivings/' + note.slug} key={idx}>
+                                <div className="rounded-xl hover:drop-shadow-basic dark:bg-darkPrimary flex transform justify-center gap-4 rounded-sm border border-6 border-gray-300 p-4 dark:border-neutral-700 hover:dark:bg-darkSecondary "
                                 >
                                     <div className=" transition group-hover:scale-110 sm:group-hover:scale-100 dark:text-gray-100 text-gray-600  ">
                                         <span className="ml-2 text-sm text-xl font-bold">{note.title}</span>

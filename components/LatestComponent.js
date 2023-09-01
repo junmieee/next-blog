@@ -8,14 +8,14 @@ import dayjs from "dayjs";
 export default function LatestComponent({ posts }) {
 
     return (
-        <div>
+        <div >
             {posts.slice(0, 5).map(({ title, date, description, slug }) => {
                 const formattedDate = dayjs(date).format("YYYY-MM-DD")
                 return (
                     <Link
                         key={slug}
                         href={`/blog/${slug}`}>
-                        <ul className="divide-y divide-gray-100 dark:divide-gray-700">
+                        <ul className="divide-y divide-gray-500 dark:divide-gray-400">
                             <li className="py-8">
                                 <div className="space-y-2 xl:grid xl:items-baseline xl:space-y-0 hover:drop-shadow-basic">
                                     <div className="flex xl:col-span-3 space-y-5">
@@ -41,7 +41,6 @@ export default function LatestComponent({ posts }) {
                                 </div>
                             </li>
                         </ul>
-
                     </Link>
                 )
             })}
