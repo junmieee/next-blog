@@ -6,8 +6,6 @@ import { useMDXComponent } from 'next-contentlayer/hooks'
 function BlogLayout({ post }) {
     const MDXBody = useMDXComponent(post.body.code)
 
-    console.log(post);
-
     return (
         <>
             <MDXComponent post={post} title={post.title} >
