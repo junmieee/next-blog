@@ -4,12 +4,12 @@ import { useMDXComponent } from 'next-contentlayer/hooks'
 
 
 function BlogLayout({ post }) {
-    const MDXBody = useMDXComponent(post.body.code)
+    // const MDXBody = useMDXComponent(post.body.code)
 
     return (
         <>
             <MDXComponent post={post} title={post.title} >
-                <MDXBody />
+                {/* <MDXBody /> */}
             </MDXComponent>
             {/* <Giscus /> */}
 

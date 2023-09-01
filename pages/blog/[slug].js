@@ -13,6 +13,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
     const post = allBlogs.find(p => p.slug === params.slug)
+
     return {
         props: {
             post,
@@ -22,9 +23,9 @@ export const getStaticProps = async ({ params }) => {
 
 
 const PostPage = ({ post }) => {
+    const [sortedPosts, setSortedPosts] = useState(post);
 
     useEffect(() => {
-        const [sortedPosts, setSortedPosts] = useState(post);
         setSortedPosts(sortedPosts);
     }, [post]);
 
