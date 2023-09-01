@@ -12,7 +12,7 @@ function BlogLayout({ post }) {
 
     return (
         <>
-            <MDXComponent post={post} title={post.title} data={post.date}>
+            <MDXComponent post={post} title={post.title} >
                 <MDXBody />
             </MDXComponent>
             <Giscus />
