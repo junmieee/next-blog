@@ -23,8 +23,15 @@ const LayoutWrapper = ({ children, toggle }) => {
 
     useEffect(() => {
         const storedLinkId = localStorage.getItem('selectedLinkId');
-        if (storedLinkId) {
+        // if (storedLinkId) {
+        //     setSelectedLinkId(storedLinkId);
+        // }
+
+        if (href.link === '/') {
+            localStorage.setItem('selectedLinkId', null);
+        } else if (storedLinkId) {
             setSelectedLinkId(storedLinkId);
+
         }
 
     }, []);

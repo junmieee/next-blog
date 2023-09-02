@@ -9,7 +9,7 @@ function BlogLayout({ post }) {
     return (
         <>
             <Suspense>
-                <MDXComponent post={post} title={post.title} >
+                <MDXComponent post={post}>
                     <MDXBody />
                 </MDXComponent>
                 <Comments />
