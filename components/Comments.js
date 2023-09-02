@@ -1,9 +1,13 @@
 import Giscus from "@giscus/react";
+import { useEffect } from "react";
 
 
 
 export default function Comments() {
-    const theme = localStorage.getItem('theme');
+    useEffect(() => {
+        // Perform localStorage action
+        const theme = localStorage.getItem('theme');
+    }, [])
 
     // const theme = resolvedTheme === 'dark' ? 'dark' : 'light';
 

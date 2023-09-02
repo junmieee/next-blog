@@ -1,5 +1,6 @@
+
 import { allNotes } from 'contentlayer/generated'
-import { Suspense } from 'react'
+import { useEffect, useState } from 'react'
 import BlogLayout from '../../layouts/BlogLayout'
 
 
@@ -22,11 +23,12 @@ export const getStaticProps = async ({ params }) => {
 
 
 const PostPage = ({ note }) => {
-    return (
-        <Suspense>
-            <BlogLayout post={note} />
-        </Suspense>
-    )
+    const [sortedNotes, setSortedNotes] = useState(note);
+
+    useEffect(() => {
+        setSortedNotes(note);
+    }, [note]);
+    return <BlogLayout post={sortedNotes} />
 }
 
 export default PostPage
