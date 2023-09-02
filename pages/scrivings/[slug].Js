@@ -1,4 +1,5 @@
 import { allNotes } from 'contentlayer/generated'
+import { Suspense } from 'react'
 import BlogLayout from '../../layouts/BlogLayout'
 
 
@@ -21,7 +22,11 @@ export const getStaticProps = async ({ params }) => {
 
 
 const PostPage = ({ note }) => {
-    return <BlogLayout post={note} />
+    return (
+        <Suspense>
+            <BlogLayout post={note} />
+        </Suspense>
+    )
 }
 
 export default PostPage
