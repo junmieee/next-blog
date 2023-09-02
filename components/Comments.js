@@ -4,9 +4,6 @@ import Giscus from "@giscus/react";
 
 export default function Comments() {
 
-    // const theme = localStorage.getItem('theme');
-
-    // const theme = resolvedTheme === 'dark' ? 'dark' : 'light';
     const theme = typeof window !== 'undefined' ? localStorage.getItem('theme') : null;
 
     return (
@@ -14,9 +11,9 @@ export default function Comments() {
             id="comments"
             repo="junmieee/next-blog"
             repoId="R_kgDOJMyq2g"
-            category="General"
-            categoryId="DIC_kwDOJMyq2s4CYZ4c"
-            mapping="pathname"
+            category="Announcements"
+            categoryId="DIC_kwDOJMyq2s4CYZ4b"
+            mapping="specific"
             term="Welcome to @giscus/react component!"
             reactionsEnabled="1"
             emitMetadata="0"

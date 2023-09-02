@@ -67,7 +67,7 @@ export default function Blog({ posts, tags }) {
     return (
         <>
             <Head>
-                <title>Chloe's Blog</title>
+                <title>Jem</title>
             </Head>
             <div >
 

@@ -20,7 +20,7 @@ export default function LandingPreview({ posts }) {
                         src={'/images/Home/Banner2.jpeg'} />
                     <div className="flex pl-14 flex-col hover:bg-gray-900/50 absolute opacity-0 hover:opacity-100 w-full h-full rounded-2xl transition ease-in-out duration-300 ">
                         <span className="text-6xl  font-bold md:text-3xl pt-14 text-slate-50">
-                            Chloe Shin 🦊
+                            J Shin 🦊
                         </span>
                         {/* <span className="text-lg  text-slate-200	  font-light md:text-base mt-2.5 break-all">
                                 Enthusiastic about learning new things and interested in user-friendly interfaces
