@@ -7,9 +7,12 @@ import Image from 'next/image';
 import { BsFillSunFill, BsCloudMoonFill } from "react-icons/bs";
 import React, { useEffect, useState } from 'react';
 import About from '../pages/about'
+import { useRouter } from 'next/router'
+
 
 const LayoutWrapper = ({ children, toggle }) => {
     const [selectedLinkId, setSelectedLinkId] = useState(null);
+    const router = useRouter()
 
     const handleLinkClick = (id) => {
         setSelectedLinkId(id);
@@ -27,7 +30,7 @@ const LayoutWrapper = ({ children, toggle }) => {
         //     setSelectedLinkId(storedLinkId);
         // }
 
-        if (href.link === '/') {
+        if (router.pathname === '/') {
             localStorage.setItem('selectedLinkId', null);
         } else if (storedLinkId) {
             setSelectedLinkId(storedLinkId);
