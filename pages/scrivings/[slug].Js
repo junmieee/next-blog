@@ -28,6 +28,7 @@ const PostPage = ({ note }) => {
     // useEffect(() => {
     //     setSortedNotes(note);
     // }, [note]);
+    console.log('노트', note)
     return <BlogLayout post={note} />
 }
 
