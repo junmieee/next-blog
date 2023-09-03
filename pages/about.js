@@ -53,7 +53,7 @@ export default function About({ recordMap, darkMode }) {
 
     return (
         <div>
-            <div className='flex justify-center items-center mb-10 '><Title title="About me" /></div>
+            <div className='flex justify-center items-center mb-10 '><Title title="Portfolio" /></div>
             <NotionRenderer
                 recordMap={recordMap}
                 darkMode={darkMode}

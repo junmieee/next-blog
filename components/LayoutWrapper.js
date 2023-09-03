@@ -26,9 +26,6 @@ const LayoutWrapper = ({ children, toggle }) => {
 
     useEffect(() => {
         const storedLinkId = localStorage.getItem('selectedLinkId');
-        // if (storedLinkId) {
-        //     setSelectedLinkId(storedLinkId);
-        // }
 
         if (router.pathname === '/') {
             localStorage.setItem('selectedLinkId', null);

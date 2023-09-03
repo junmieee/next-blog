@@ -80,10 +80,9 @@ export default function Note({ notes, tags }) {
                 className="my-10 grid grid-cols-2 gap-4 mt-14 "
             >
                 {filteredNotes.map((note, idx) => {
-                    console.log('노트 슬러그', note.slug)
                     return (
                         <>
-                            <Link href={'/scrivings/' + note.slug} >
+                            <Link href={'/scrivings/' + note.slug} as={'/scrivings/' + note.slug} >
                                 <div key={idx} className="rounded-xl hover:drop-shadow-basic dark:bg-darkPrimary flex transform justify-center gap-4 rounded-sm border border-6 border-gray-300 p-4 dark:border-neutral-700 hover:dark:bg-darkSecondary "
                                 >
                                     <div className=" transition group-hover:scale-110 sm:group-hover:scale-100 dark:text-gray-100 text-gray-600  ">
