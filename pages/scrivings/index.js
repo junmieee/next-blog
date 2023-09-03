@@ -76,8 +76,8 @@ export default function Note({ notes, tags }) {
                 viewport={{ once: true }}
                 className="my-10 grid grid-cols-2 gap-4 mt-14 "
             > */}
-            <div
-                className="my-10 grid grid-cols-2 gap-4 mt-14 "
+            <div className="my-10 grid grid-cols-2 gap-4 mt-14 "
+
             >
                 {filteredNotes.map((note, idx) => {
                     return (
@@ -95,9 +95,9 @@ export default function Note({ notes, tags }) {
                         </>
                     )
                 })}
-                key={idx}
-                {/* </motion.div> */}
-            </>
+            </div>
+            {/* </motion.div> */}
+        </>
 
-            )
+    )
 }
