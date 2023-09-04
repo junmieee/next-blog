@@ -73,16 +73,17 @@ export default function Note({ notes, tags }) {
                     <Tag key={i} tag={tag} onClick={() => onTagClick(tag)} selected={selectedTag === tag} />
                 ))}
             </div>
-            <motion.div
-                initial="hidden"
-                whileInView="visible"
-                variants={FadeContainer}
-                viewport={{ once: true }}
-                className="my-10 grid grid-cols-2 gap-4 mt-14 "
-            >
-                {filteredNotes.map((note, idx) => (
-                    // console.log('노트 슬러그', note.slug)
-                    <>
+
+            {filteredNotes.map((note, idx) => (
+                // console.log('노트 슬러그', note.slug)
+                <>
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        variants={FadeContainer}
+                        viewport={{ once: true }}
+                        className="my-10 grid grid-cols-2 gap-4 mt-14 "
+                    >
                         <Link href={`/scrivings/` + note.slug} as={"/scrivings/" + note.slug} >
                             <div
                                 // onClick={() => onLinkClick(note)}
@@ -95,9 +96,10 @@ export default function Note({ notes, tags }) {
                                 </p>
                             </div>
                         </Link>
-                    </>
-                ))}
-            </motion.div>
+                    </motion.div>
+
+                </>
+            ))}
         </>
 
     )
