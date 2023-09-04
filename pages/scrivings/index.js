@@ -26,15 +26,14 @@ export default function Note({ notes, tags }) {
     const [allTags, settags] = useState([]);
     const router = useRouter()
 
-    useEffect(() => {
-        // const sorted = [...posts].sort((a, b) => b.dateValue - a.dateValue);
-        const sorted = notes.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
-        setSortedNotes(sorted);
-    }, [notes]);
+    // useEffect(() => {
+    //     const sorted = notes.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
+    //     setSortedNotes(sorted);
+    // }, [notes]);
 
-    useEffect(() => {
-        settags(tags);
-    }, [tags]);
+    // useEffect(() => {
+    //     settags(tags);
+    // }, [tags]);
 
 
     const onTagClick = (tag) => {
@@ -50,11 +49,11 @@ export default function Note({ notes, tags }) {
         setSelectedTag(null);
     };
 
-    const onLinkClick = (note) => {
-        router.push(`/scrivings/${note.slug}`)
-    }
+    // const onLinkClick = (note) => {
+    //     router.push(`/scrivings/${note.slug}`)
+    // }
 
-    const filteredNotes = sortedNotes.filter((note) => {
+    const filteredNotes = notes.filter((note) => {
         if (selectedTag === null) {
             return true;
         } else {
@@ -65,13 +64,12 @@ export default function Note({ notes, tags }) {
     return (
         <>
             <Suspense>
-
                 <div className='flex pt-6 items-end'>
                     <Title title="Scrivings" />
                 </div>
                 <div className="mt-6 flex flex-wrap gap-2 py-4">
                     <Tag tag="All" onClick={onAllTagClick} selected={selectedTag === null} />
-                    {allTags.map((tag, i) => (
+                    {tags.map((tag, i) => (
                         <Tag key={i} tag={tag} onClick={() => onTagClick(tag)} selected={selectedTag === tag} />
                     ))}
                 </div>
