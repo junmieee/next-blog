@@ -73,33 +73,28 @@ export default function Note({ notes, tags }) {
                     <Tag key={i} tag={tag} onClick={() => onTagClick(tag)} selected={selectedTag === tag} />
                 ))}
             </div>
-
-            {filteredNotes.map((note, idx) => (
-                // console.log('노트 슬러그', note.slug)
-                <>
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        variants={FadeContainer}
-                        viewport={{ once: true }}
-                        className="my-10 grid grid-cols-2 gap-4 mt-14 "
-                    >
-                        <Link href={`/scrivings/` + note.slug} as={"/scrivings/" + note.slug} >
-                            <div
-                                // onClick={() => onLinkClick(note)}
-                                key={idx} className="rounded-xl hover:drop-shadow-basic dark:bg-darkPrimary flex transform justify-center gap-4 rounded-sm border border-6 border-gray-300 p-4 dark:border-neutral-700 hover:dark:bg-darkSecondary "
-                            >
-                                <div className=" transition group-hover:scale-110 sm:group-hover:scale-100 dark:text-gray-100 text-gray-600  ">
-                                    <span className="ml-2 text-sm text-xl font-bold">{note.title}</span>
-                                </div>
-                                <p className=" select-none text-sm font-semibold sm:inline-flex md:text-base">
-                                </p>
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                variants={FadeContainer}
+                viewport={{ once: true }}
+                className="my-10 grid grid-cols-2 gap-4 mt-14 "
+            >
+                {filteredNotes.map((note, idx) => (
+                    <Link href={`/scrivings/` + note.slug} as={"/scrivings/" + note.slug} >
+                        <div
+                            // onClick={() => onLinkClick(note)}
+                            key={idx} className="rounded-xl hover:drop-shadow-basic dark:bg-darkPrimary flex transform justify-center gap-4 rounded-sm border border-6 border-gray-300 p-4 dark:border-neutral-700 hover:dark:bg-darkSecondary "
+                        >
+                            <div className=" transition group-hover:scale-110 sm:group-hover:scale-100 dark:text-gray-100 text-gray-600  ">
+                                <span className="ml-2 text-sm text-xl font-bold">{note.title}</span>
                             </div>
-                        </Link>
-                    </motion.div>
-
-                </>
-            ))}
+                            <p className=" select-none text-sm font-semibold sm:inline-flex md:text-base">
+                            </p>
+                        </div>
+                    </Link>
+                ))}
+            </motion.div>
         </>
 
     )
