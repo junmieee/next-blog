@@ -6,7 +6,7 @@ import { Suspense, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { allNotes } from 'contentlayer/generated';
 import { allScrivTags } from 'constants/dataset';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 
 export const getStaticProps = async () => {
@@ -23,7 +23,7 @@ export default function Note({ notes, tags }) {
     const [selectedTag, setSelectedTag] = useState(null);
     const [sortedNotes, setSortedNotes] = useState([]);
     const [allTags, settags] = useState([]);
-
+    const router = useRouter()
     useEffect(() => {
         const sorted = notes.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
         setSortedNotes(sorted);
