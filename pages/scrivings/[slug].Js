@@ -23,13 +23,13 @@ export const getStaticProps = async ({ params }) => {
 
 
 const PostPage = ({ note }) => {
-    const [sortedNotes, setSortedNotes] = useState(note);
+    // const [sortedNotes, setSortedNotes] = useState(note);
 
-    useEffect(() => {
-        setSortedNotes(note);
-    }, [note]);
-    console.log('노트', note)
-    return <BlogLayout post={sortedNotes} />
+    // useEffect(() => {
+    //     setSortedNotes(note);
+    // }, [note]);
+    // console.log('노트', note)
+    return <BlogLayout post={note} />
 }
 
 export default PostPage
