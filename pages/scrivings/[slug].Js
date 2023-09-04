@@ -8,7 +8,7 @@ import BlogLayout from '../../layouts/BlogLayout'
 export const getStaticPaths = async () => {
     return {
         paths: allNotes.map(p => ({ params: { slug: p.slug } })),
-        fallback: true,
+        fallback: 'blocking'
     }
 }
 
