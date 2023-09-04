@@ -8,7 +8,7 @@ import BlogLayout from '../../layouts/BlogLayout'
 export const getStaticPaths = async () => {
     return {
         paths: allNotes.map(p => ({ params: { slug: p.slug } })),
-        fallback: false,
+        fallback: true,
     }
 }
 
@@ -23,13 +23,13 @@ export const getStaticProps = async ({ params }) => {
 
 
 const PostPage = ({ note }) => {
-    // const [sortedNotes, setSortedNotes] = useState(note);
+    const [sortedNotes, setSortedNotes] = useState(note);
 
-    // useEffect(() => {
-    //     setSortedNotes(note);
-    // }, [note]);
-    // console.log('노트', note)
-    return <BlogLayout post={note} />
+    useEffect(() => {
+        setSortedNotes(note);
+    }, [note]);
+    console.log('노트', note)
+    return <BlogLayout post={sortedNotes} />
 }
 
 export default PostPage
