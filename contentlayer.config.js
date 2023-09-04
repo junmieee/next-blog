@@ -62,17 +62,17 @@ export const Note = defineDocumentType(() => ({
             type: 'string',
             resolve: note => note._raw.sourceFileName.replace(/\.mdx$/, ''),
         },
-        pathSegments: {
-            type: 'json',
-            resolve: doc =>
-                doc._raw.flattenedPath
-                    .split('/')
-                    // skip `/docs` prefix
-                    .slice(1)
-                    .map(pathName => {
-                        return { pathName }
-                    }),
-        },
+        // pathSegments: {
+        //     type: 'json',
+        //     resolve: doc =>
+        //         doc._raw.flattenedPath
+        //             .split('/')
+        //             // skip `/docs` prefix
+        //             .slice(1)
+        //             .map(pathName => {
+        //                 return { pathName }
+        //             }),
+        // },
         // slug: { type: 'string', resolve: (post) => `/posts/${post._raw.flattenedPath}` },
     },
 }))

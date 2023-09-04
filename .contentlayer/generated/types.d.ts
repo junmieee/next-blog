@@ -36,7 +36,6 @@ export type Note = {
   body: MDX
   url_path: string
   slug: string
-  pathSegments: json
 }  
 
 /** Nested types */

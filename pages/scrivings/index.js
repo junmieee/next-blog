@@ -83,7 +83,7 @@ export default function Note({ notes, tags }) {
                 {filteredNotes.map((note, idx) => (
                     // console.log('노트 슬러그', note.slug)
                     <>
-                        <Link href={`/scrivings?uri=` + note.slug} as={"/scrivings/" + note.slug} >
+                        <Link href={`/scrivings/` + note.slug} as={"/scrivings/" + note.slug} >
                             <div
                                 // onClick={() => onLinkClick(note)}
                                 key={idx} className="rounded-xl hover:drop-shadow-basic dark:bg-darkPrimary flex transform justify-center gap-4 rounded-sm border border-6 border-gray-300 p-4 dark:border-neutral-700 hover:dark:bg-darkSecondary "
