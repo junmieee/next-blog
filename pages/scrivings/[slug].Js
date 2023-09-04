@@ -1,6 +1,6 @@
 
 import { allNotes } from 'contentlayer/generated'
-import { Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import BlogLayout from '../../layouts/BlogLayout'
 
 
@@ -8,7 +8,7 @@ import BlogLayout from '../../layouts/BlogLayout'
 export const getStaticPaths = async () => {
     return {
         paths: allNotes.map(p => ({ params: { slug: p.slug } })),
-        fallback: 'blocking'
+        fallback: false,
     }
 }
 
@@ -29,11 +29,7 @@ const PostPage = ({ note }) => {
     //     setSortedNotes(note);
     // }, [note]);
     // console.log('노트', note)
-    return (
-        <Suspense>
-            <BlogLayout post={sortedNotes} />
-        </Suspense>
-    )
+    return <BlogLayout post={note} />
 }
 
 export default PostPage
