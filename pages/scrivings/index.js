@@ -64,24 +64,25 @@ export default function Note({ notes, tags }) {
 
     return (
         <>
-            <div className='flex pt-6 items-end'>
-                <Title title="Scrivings" />
-            </div>
-            <div className="mt-6 flex flex-wrap gap-2 py-4">
-                <Tag tag="All" onClick={onAllTagClick} selected={selectedTag === null} />
-                {allTags.map((tag, i) => (
-                    <Tag key={i} tag={tag} onClick={() => onTagClick(tag)} selected={selectedTag === tag} />
-                ))}
-            </div>
-            <motion.div
-                initial="hidden"
-                whileInView="visible"
-                variants={FadeContainer}
-                viewport={{ once: true }}
-                className="my-10 grid grid-cols-2 gap-4 mt-14 "
-            >
-                {filteredNotes.map((note, idx) => (
-                    <Suspense>
+            <Suspense>
+
+                <div className='flex pt-6 items-end'>
+                    <Title title="Scrivings" />
+                </div>
+                <div className="mt-6 flex flex-wrap gap-2 py-4">
+                    <Tag tag="All" onClick={onAllTagClick} selected={selectedTag === null} />
+                    {allTags.map((tag, i) => (
+                        <Tag key={i} tag={tag} onClick={() => onTagClick(tag)} selected={selectedTag === tag} />
+                    ))}
+                </div>
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    variants={FadeContainer}
+                    viewport={{ once: true }}
+                    className="my-10 grid grid-cols-2 gap-4 mt-14 "
+                >
+                    {filteredNotes.map((note, idx) => (
                         <Link href={`/scrivings/` + note.slug} as={"/scrivings/" + note.slug} >
                             <div
                                 // onClick={() => onLinkClick(note)}
@@ -94,9 +95,10 @@ export default function Note({ notes, tags }) {
                                 </p>
                             </div>
                         </Link>
-                    </Suspense>
-                ))}
-            </motion.div>
+                    ))}
+                </motion.div>
+            </Suspense>
+
         </>
 
     )
