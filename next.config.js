@@ -35,7 +35,7 @@ const nextConfig = {
 }
 
 // Merge MDX config with Next.js config
-// module.exports = withMDX(nextConfig)
+module.exports = withMDX(nextConfig)
 
 
-module.exports = withContentlayer(nextConfig)
+// module.exports = withContentlayer(nextConfig)
