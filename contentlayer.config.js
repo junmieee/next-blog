@@ -39,7 +39,7 @@ export const Blog = defineDocumentType(() => ({
 
 export const Note = defineDocumentType(() => ({
     name: 'Note',
-    filePathPattern: `scrivings/*.mdx`,
+    filePathPattern: `scrivings/**/*.mdx`,
     contentType: 'mdx',
     fields: {
         title: {
