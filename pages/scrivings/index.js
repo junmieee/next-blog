@@ -78,8 +78,8 @@ export default function Note({ notes, tags }) {
                 className="my-10 grid grid-cols-2 gap-4 mt-14 "
             >
                 <Suspense>
-                    {filteredNotes.map((note) => (
-                        <Link key={note.id} href={`/scrivings/${note.slug}`} as={`/scrivings/${note.slug}`}>
+                    {filteredNotes.map((note, idx) => (
+                        <Link key={idx} href={`/scrivings/${note.slug}`} as={`/scrivings/${note.slug}`}>
                             <div className="rounded-xl hover:drop-shadow-basic dark:bg-darkPrimary flex transform justify-center gap-4 rounded-sm border border-6 border-gray-300 p-4 dark:border-neutral-700 hover:dark:bg-darkSecondary">
                                 <div className="transition group-hover:scale-110 sm:group-hover:scale-100 dark:text-gray-100 text-gray-600">
                                     <span className="ml-2 text-sm text-xl font-bold">{note.title}</span>
