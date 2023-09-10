@@ -47,9 +47,9 @@ export default function Note({ notes, tags }) {
         setSelectedTag(null);
     };
 
-    const onLinkClick = (note) => {
-        router.push(`/scrivings/${note.slug}`)
-    }
+    // const onLinkClick = (note) => {
+    //     router.push(`/scrivings/${note.slug}`)
+    // }
 
     const filteredNotes = sortedNotes.filter((note) => {
         if (selectedTag === null) {
