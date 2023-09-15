@@ -7,7 +7,9 @@
 ## 기술 스택
 
 
-<img src="https://img.shields.io/badge/typescript-#3178C6?style=flat-square&logo=typescript&logoColor=white">
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"><img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white"><img src="https://img.shields.io/badge/Tailwind CSS-FF4154?style=for-the-badge&logo=tailwindcss&logoColor=white"><img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white"><img src="https://img.shields.io/badge/styled-components-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"><img src="https://img.shields.io/badge/Framer-0055FF?style=for-the-badge&logo=framer&logoColor=white"><img src="https://img.shields.io/badge/ContentLayer-D4911E?style=for-the-badge&logo=contentLayer&logoColor=white">
+<br/>
+
 
 
 
