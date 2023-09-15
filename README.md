@@ -3,11 +3,14 @@
  ## 프로젝트 소개
 - 평소 간단한 글과 코드 조각을 담은 내용은 Notion, 비교적 긴 내용의 글은 Velog를 사용해왔습니다. 이 두 종류의 글을 모두 담을 수 있는 나만의 공간을 만들고 싶었습니다.
 
+### 🔗 배포 링크 
+https://next-blog-rho-peach.vercel.app/
+
 </aside>
 
 ## 기술 스택
 
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"><img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white"><img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white"><img src="https://img.shields.io/badge/StyledComponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"><img src="https://img.shields.io/badge/Framer-0055FF?style=for-the-badge&logo=framer&logoColor=white"><img src="https://img.shields.io/badge/ContentLayer-D4911E?style=for-the-badge&logo=contentLayer&logoColor=white">
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"> <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white"> <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white"> <img src="https://img.shields.io/badge/StyledComponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"> <img src="https://img.shields.io/badge/Framer-0055FF?style=for-the-badge&logo=framer&logoColor=white"> <img src="https://img.shields.io/badge/ContentLayer-D4911E?style=for-the-badge&logo=contentLayer&logoColor=white">
 <br/>
 
 ---
