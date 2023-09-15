@@ -6,7 +6,8 @@
 
 ### 주요 기능
 
-[화면 기록 2023-08-13 오후 5.17.53.mov](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9c5e3491-56a2-480b-8b4b-332523b62d89/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB_%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8_2023-08-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_5.17.53.mov)
+https://github.com/junmieee/next-blog/assets/76501504/cc998383-0663-4a00-9c77-f7489d858a6a
+
 
 ---
 
