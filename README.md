@@ -1,12 +1,14 @@
 <aside>
-🌟 프로젝트 소개
+ ## 프로젝트 소개
 - 평소 간단한 글과 코드 조각을 담은 내용은 Notion, 비교적 긴 내용의 글은 Velog를 사용해왔습니다. 이 두 종류의 글을 모두 담을 수 있는 나만의 공간을 만들고 싶었습니다.
 
 </aside>
 
-### 주요 기능
+## 기술 스택
 
-https://github.com/junmieee/next-blog/assets/76501504/cc998383-0663-4a00-9c77-f7489d858a6a
+
+<img src="https://img.shields.io/badge/typescript-#3178C6?style=flat-square&logo=typescript&logoColor=white">
+
 
 
 ---
