@@ -1,15 +1,17 @@
 import MDXComponent from '../components/MDXComponents';
 import { useMDXComponent } from 'next-contentlayer/hooks'
-import Comments from 'components/Comments'
+import { Suspense } from 'react';
 
 function BlogLayout({ post }) {
     const MDXBody = useMDXComponent(post.body.code)
 
     return (
         <>
-            <MDXComponent post={post}>
-                <MDXBody />
-            </MDXComponent>
+            <Suspense>
+                <MDXComponent post={post}>
+                    <MDXBody />
+                </MDXComponent>
+            </Suspense>
 
         </>
 
