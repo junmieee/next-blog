@@ -26,8 +26,9 @@ const MDXComponent = ({ children, post }) => {
                     ))}
                 </div>
                 {children}
+                <Comments postId={post.title} />
+
             </div>
-            <Comments />
         </>
     );
 };
