@@ -52,17 +52,19 @@ export default function Blog({ posts, tags }) {
         setSearchValue('');
     };
 
+
+    const filteredSearchPosts = sortedPosts.filter((p) => {
+        const searchContent = p.title
+        return searchContent.toLowerCase().includes(searchValue.toLowerCase())
+    });
+
+
     const filteredPosts = filteredSearchPosts.filter((post) => {
         if (selectedTag === null) {
             return true;
         } else {
             return post.tags.includes(selectedTag);
         }
-    });
-
-    const filteredSearchPosts = sortedPosts.filter((p) => {
-        const searchContent = p.title
-        return searchContent.toLowerCase().includes(searchValue.toLowerCase())
     });
 
     return (
