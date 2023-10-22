@@ -41,10 +41,7 @@ export default function Blog({ posts, tags }) {
     }, [tags]);
 
 
-    const filteredSearchPosts = sortedPosts.filter((p) => {
-        const searchContent = p.title
-        return searchContent.toLowerCase().includes(searchValue.toLowerCase())
-    });
+
 
     const onTagClick = (tag) => {
         if (selectedTag === tag) {
@@ -63,6 +60,10 @@ export default function Blog({ posts, tags }) {
         }
     });
 
+    const filteredSearchPosts = sortedPosts.filter((p) => {
+        const searchContent = p.title
+        return searchContent.toLowerCase().includes(searchValue.toLowerCase())
+    });
 
     return (
         <>

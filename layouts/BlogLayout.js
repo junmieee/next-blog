@@ -1,6 +1,5 @@
 import MDXComponent from '../components/MDXComponents';
 import { useMDXComponent } from 'next-contentlayer/hooks'
-import { Suspense } from 'react';
 import Comments from 'components/Comments'
 
 function BlogLayout({ post }) {
@@ -8,12 +7,9 @@ function BlogLayout({ post }) {
 
     return (
         <>
-            <Suspense>
-                <MDXComponent post={post}>
-                    <MDXBody />
-                </MDXComponent>
-                <Comments />
-            </Suspense>
+            <MDXComponent post={post}>
+                <MDXBody />
+            </MDXComponent>
 
         </>
 

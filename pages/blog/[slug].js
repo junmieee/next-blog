@@ -23,11 +23,7 @@ export const getStaticProps = async ({ params }) => {
 
 
 const PostPage = ({ post }) => {
-    // const [sortedPosts, setSortedPosts] = useState(post);
 
-    // useEffect(() => {
-    //     setSortedPosts(sortedPosts);
-    // }, [post]);
     return <BlogLayout post={post} />
 }
 

@@ -9,7 +9,7 @@ import { FadeContainer, popUp, popUpY } from "lib/animtaion";
 
 const BlogCard = (post) => {
     // const formattedDate = dayjs(post.date).format("YYYY-MM-DD")
-    console.log('포스트 슬러그', post.slug)
+    // console.log('포스트 슬러그', post.slug)
 
     return (
         <ul role="list">
