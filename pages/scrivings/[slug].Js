@@ -1,6 +1,5 @@
 
 import { allNotes } from 'contentlayer/generated'
-import { useEffect, useState } from 'react'
 import BlogLayout from '../../layouts/BlogLayout'
 
 
@@ -13,7 +12,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-    const note = allNotes.find(p => p.slug === params.slug)
+    const note = allNotes.find(p => p.slug === params.slug) || null;
     return {
         props: {
             note,
@@ -23,12 +22,7 @@ export const getStaticProps = async ({ params }) => {
 
 
 const PostPage = ({ note }) => {
-    // const [sortedNotes, setSortedNotes] = useState(note);
-
-    // useEffect(() => {
-    //     setSortedNotes(note);
-    // }, [note]);
-    // console.log('노트', note)
+    // console.log('note:', note)
     return <BlogLayout post={note} />
 }
 
